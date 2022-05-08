@@ -1,0 +1,96 @@
+#menu{
+    font: 400 1.5em/300% 'Handlee', Helvetica, Sans-serif;	
+    top: 0;
+   	z-index: 100;
+}
+
+button{
+    font: 400 1.5em/300% 'Handlee', Helvetica, Sans-serif;	
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+li{
+    display: inline;
+    margin: 20px;
+
+}
+
+#register, #login{
+    font: 400 1em/300% 'Handlee', Helvetica, Sans-serif;
+    color: #FFA0C9;
+	border-top: 1px solid #FFD2D2;
+	border-left: 1px solid #FFD2D2;
+	border-right: 1px solid #FFD2D2;
+	border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	background: #FFF4F4;
+	padding: 0px 8px 3px 8px;
+	box-shadow: -0px -1px 2px #F1F1F1;
+	-moz-box-shadow:-0px -1px 2px #F1F1F1;
+	-webkit-box-shadow:-0px -1px 2px #F1F1F1;
+	font-weight: normal;
+
+}
+
+input{
+    border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 1px solid #FFC2DC;
+	/* outline: none; */
+	color: #F072A9;
+	/* padding: 5px 8px 5px 8px; */
+	box-shadow: inset 1px 1px 4px #FFD5E7;
+	-moz-box-shadow: inset 1px 1px 4px #FFD5E7;
+	-webkit-box-shadow: inset 1px 1px 4px #FFD5E7;
+	background: #FFEFF6;
+	width:200px;
+    font: 400 1em/300% 'Handlee', Helvetica, Sans-serif;
+	display: inline-table;
+    margin: 10px;
+}
+
+::placeholder{
+    color:#F072A9;
+}
+
+#submit, #start{
+    border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 1px solid #FFC2DC;
+	/* outline: none; */
+	color: #F072A9;
+	/* padding: 5px 8px 5px 8px; */
+	box-shadow: inset 1px 1px 4px #FFD5E7;
+	-moz-box-shadow: inset 1px 1px 4px #FFD5E7;
+	-webkit-box-shadow: inset 1px 1px 4px #FFD5E7;
+	background: #FFEFF6;
+    padding: 0;
+    top:0px;
+}
+
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 2px;
+}
+
+input.error, textarea.error {
+    border: 1px dashed red;
+    font-weight: 300;
+    color: red;
+}
+
+p.note {
+    font-size: 1rem;
+    color: red;
+  }
+  
