@@ -5,6 +5,8 @@
 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
+		<script type="text/javascript" src="./screens.js"></script>
+		<script type="text/javascript" src="./validateForms.js"></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Arima+Madurai:wght@500&family=Handlee&display=swap" rel="stylesheet">
@@ -18,27 +20,81 @@
 
 	<body>
 		<center><div id="menu">
-			<li><button id="openHome">Home</button></li>
-			<li><button id="openLogin">Login</button></li>
-			<li><button id="openReg">Register</button></li>
-			<li><button id="openAbout">About</button></li>
+			<li><button id="openHome" onclick="switchScreens('welcome')">Home</button></li>
+			<li><button id="openLogin" onclick="switchScreens('login')">Login</button></li>
+			<li><button id="openReg" onclick="switchScreens('register')">Register</button></li>
+			<li><button id="openAbout" onclick="switchScreens('about')">About</button></li>
 		</div></center>
 
 		<div id="welcome" style="display:none">
 			<h1>Welcome!</h1>
+			
 
 		</div>
 
-		<div id="settings"></div>
+		<center><div id="settings">
+			
+
+			<form id="settingsform">
+				<label for="KeyUp"><b>Key for moving up</b></label>
+				<input id="keyUp" type="text" value="⇧" onkeypress="myKeyPress('up')" />
+				<br/>
+
+				<label for="KeyDown"><b>Key for moving down</b></label>
+				<input id="keyDown" type="text" value="⇩" onkeypress="myKeyPress('down')" />
+				<br/>
+
+				<label for="KeyLeft"><b>Key for moving left</b></label>
+				<input id="keyLeft" type="text" value="⇦" onkeypress="myKeyPress('left')" />
+				<br/>
+
+				<label for="KeyRight"><b>Key for moving right</b></label>
+				<input id="keyRight" type="text" value="➪" onkeypress="myKeyPress('right')" />
+				<br/>
+
+				<label for="5pointscolor"><b>Choose color for 5 points food</b></label>
+				<input id="5pointscolor" type="color" value="#00ffb3" />
+				<br/>
+				
+				<label for="15pointscolor"><b>Choose color for 15 points food</b></label>
+				<input id="15pointscolor" type="color" value="#67e5fe"/>
+				<br/>
+
+				<label for="25pointscolor"><b>Choose color for 25 points food</b></label>
+				<input id="25pointscolor" type="color" value="#d8a8ff" />
+				<br/>
+
+				<p><b>How many food dots would you like to play with?</b></p>
+				<label>50</label><input type="range" id="foodnum" name="foodnum" min="50" max="90" value="50" step="1">
+				<label>90</label>
+				<br/>
+				<label id="chosenfoodnum"> </label>
+				<p><b>How many monsters would you like to play with?</b></p>
+				<label>1</label>
+				<input type="range" id="monsnum" name="monsnum" min="1" max="4" value="2" step="1">
+				<label>4</label>
+				<br/>
+				<label id="chosenmonsnum"> </label>
+				<p><b>How much time would you like to play? (in seconds)</b></p>
+				<label>60</label>
+				<input type="range" id="monsnum" name="monsnum" min="60" max="900" value="60" step="1">
+				<label>900</label>
+				<br/>
+				<label id="chosentime"> </label>
+
+
+			</form>
+
+		</div></center>
 
 		<center><div id="login">
 			<form id="loginform">
 				<label for="username"><b>User Name</b></label>
-				<input type="text" placeholder="Enter User Name" name="username" id="username" required>
+				<input class="forminput" type="text" placeholder="Enter User Name" name="username" id="username" required>
 				<br/>
 
 				<label for="psw"><b>Password</b></label>
-				<input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+				<input class="forminput" type="password" placeholder="Enter Password" name="psw" id="psw" required>
 				<br/>
 				<button id="start" type="submit">Let's Get Started!</button>
 			</form>
@@ -49,25 +105,25 @@
 		<center><div id="register">
 
 			<p><b>Please fill in this form to create an account</b></p>
-			<form id="form">
+			<form id="form" >
 				<label for="fullname"><b>Full Name</b></label>
-				<input type="text" placeholder="Enter Full Name" name="fullname" id="fullname" required>
+				<input class="forminput" type="text" placeholder="Enter Full Name" name="fullname" id="fullname" required>
 				<br/>
 
 				<label for="username"><b>User Name</b></label>
-				<input type="text" placeholder="Enter User Name" name="username" id="username" required>
+				<input class="forminput" type="text" placeholder="Enter User Name" name="username" id="username" required>
 				<br/>
 
 				<label for="psw"><b>Password</b></label>
-				<input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+				<input class="forminput" type="password" placeholder="Enter Password" name="psw" id="psw" required>
 				<br/>
 
 				<label for="email"><b>Email</b></label>
-				<input type="text" placeholder="Enter Email" name="email" id="email" required>
+				<input class="forminput" type="text" placeholder="Enter Email" name="email" id="email" required>
 				<br/>
 
 				<label for="birthday"><b>Birthday</b>:</label>
-				<input type="date" id="birthday" name="birthday">
+				<input class="forminput" type="date" id="birthday" name="birthday">
 				<br/>
 
 				<button id="submit" type="submit">Submit</button>
@@ -76,22 +132,26 @@
 			
 		</div></center>
 
+		<div class="paceman">
+		<div class="paceman-eye"></div>
+		<div class="paceman-mouth"></div>
+
 		<div id="about" style="display:none"></div>
 
 		<div id="game" style="display:none"></div>
 
 
 
-		<div id="score" style="display:none">
+		<div id="score">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />
 		</div>
-		<div id="time" style="display:none">
+		<div id="time">
 			<label for="lblTime">TIME:</label>
 			<input id="lblTime" type="text" />
 		</div>
-		<div id="game" style="display:none">
-			<canvas id="canvas" height="600" width="600"></canvas>
+		<div id="game" >
+			<canvas id="canvas" height="1000" width="1000"></canvas>
 		</div>
 
 
@@ -101,134 +161,6 @@
 			$('div').hide();
 			$("#menu").show();
 			$('#welcome').show();
-			$(document).ready(function(){
-				$("#openHome").click(function(){
-					$('div').hide();
-					$("#menu").show();
-					$("#welcome").show();
-				});
-			});
-
-			$(document).ready(function(){
-				$("#openLogin").click(function(){
-					$('div').hide();
-					$("#menu").show();
-					$("#login").show();
-				});
-			});
-
-			$(document).ready(function(){
-				$("#openReg").click(function(){
-					$('div').hide();
-					$("#menu").show();
-					$("#register").show();
-				});
-			});
-
-			$(document).ready(function(){
-				$("#openAbout").click(function(){
-					$('div').hide();
-					$("#menu").show();
-					$("#about").show();
-				});
-			});
-
-			$(document).ready(function(){
-				$("#loginform").action(function(){
-					$('div').hide();
-					$("#menu").show();
-					$("#settings").show();
-				});
-			});
-
-			$(document).ready(function(){
-				$("#form").action(function(){
-					$('div').hide();
-					$("#menu").show();
-					$("#login").show();
-				});
-			});
-
-
-
-
-
-			// $(document).ready(function () {
-  			// 	$("#submit").on('click', function(){
-    		// 		var number = /([0-9])/;
-    		// 		var alphabets = /([a-zA-Z])/;
-			// 		if (!($('#psw').val().length >= 6 && $('#psw').val().match(/[a-z].*[0-9]|[0-9].*[a-z]\d*/))) {
-			// 			alert("weak password")
-			// 		}
-			// 		if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test("#email".value))){
-    		// 			alert("You have entered an invalid email address!")
-  			// 		}
-    
-
-			// 	});
-			// });
-
-			$(function() {
-				$("#form").validate({
-					rules: {
-					fullname : {
-						required: true,
-						pattern: /^[a-zA-Z ]+$/
-					},
-					psw: {
-						required: true,
-						pattern: /[a-z].*[0-9]|[0-9].*[a-z]\d*/,
-						minlength: 6
-					},
-					email: {
-						required: true,
-						email: true
-					},
-					birthday: {
-						required: true,
-						date: true
-					},
-					username: {
-						required: true,
-					}
-					},
-					messages : {
-					fullname: {
-						required: "Please enter your full name",
-						pattern: "Name should not include numbers",
-					},
-					psw: {
-						required: "Please enter a password",
-						pattern: "Your password should contain at least one letter and one number",
-						minlength: "Your password should contain at least 6 characters"
-					},
-					email: {
-						required: "Please enter your email",
-						email: "The email should be in the format: abc@domain.tld"
-					},
-					birthday: {
-						required: "Please enter your birthday"
-					},
-					username: {
-						required: "Please enter a user name"
-					}
-					}
-				});
-
-			});
-
-			$(function() {
-				$("#loginform").validate({
-					rules: {
-					username : {
-						required: true,
-					},
-					psw: {
-						required: true,
-					}
-					}
-				});
-			});
 
 		</script>
 	</body>

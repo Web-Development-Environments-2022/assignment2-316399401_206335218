@@ -20,6 +20,11 @@ li{
 
 }
 
+#settings{
+	font: 400 1em/300% 'Handlee', Helvetica, Sans-serif;
+
+}
+
 #register, #login{
     font: 400 1em/300% 'Handlee', Helvetica, Sans-serif;
     color: #FFA0C9;
@@ -38,14 +43,12 @@ li{
 
 }
 
-input{
+.forminput{
     border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border: 1px solid #FFC2DC;
-	/* outline: none; */
 	color: #F072A9;
-	/* padding: 5px 8px 5px 8px; */
 	box-shadow: inset 1px 1px 4px #FFD5E7;
 	-moz-box-shadow: inset 1px 1px 4px #FFD5E7;
 	-webkit-box-shadow: inset 1px 1px 4px #FFD5E7;
@@ -93,4 +96,76 @@ p.note {
     font-size: 1rem;
     color: red;
   }
+
+
+/* CSS Document */
+*,*:after,*:before{
+	box-sizing:border-box;
+	}
+	/* body{ */
+		/* background-color:#000000; */
+		/* color:#FFFFFF;
+		padding:0px;
+		margin:0px;
+		height:100vh;
+		display:flex;
+		justify-content:center;
+		align-items:center;} */
+		.paceman{
+			width:100px;
+			height:100px;
+			border-radius:50%;
+			background-color:#f2d648;
+			margin-top:20px;
+			position:relative;}
+			.paceman-eye{
+				width:10px;
+				height:10px;
+				border-radius:50%;
+				background-color:#333333;
+				position:absolute;
+				top:20px;
+				right:40px;
+				position:absolute;}
+				.paceman-mouth{
+					background-color:#000000;
+					position:absolute;
+					width:100%;
+					height:100%;
+clip-path:polygon(100% 74%,44% 48%,100% 21%);
+animation-name:eat;
+animation-duration:0.7s;
+animation-iteration-count:infinite;}
+ 
+@keyframes eat{
+	
+0%{
+	clip-path:polygon(100% 74%,44% 48%,100% 21%);
+	}
+	25%{
+	clip-path:polygon(100% 60%,44% 48%,100% 40%);
+	}
+	50%{
+	clip-path:polygon(100% 50%,44% 48%,100% 50%);
+	}
+	75%{
+	clip-path:polygon(100% 59%,44% 48%,100% 35%);
+	}
+	100%{
+	clip-path:polygon(100% 74%,44% 48%,100% 21%);
+	}
+	
+	
+	
+	}
+		@keyframes food	{
+			0%{
+				transform:translateX(0);
+				opacity:1;}
+				100%{
+				transform:translateX(-50px);
+				opacity:0;}
+			
+			}
   
+

@@ -7,11 +7,15 @@ var start_time;
 var time_elapsed;
 var interval;
 var curdiv;
+var p5color;
+var p15color;
+var p25color;
 
 $(document).ready(function() {
 	context = canvas.getContext("2d");
 	Start();
 });
+
 
 
 function Start() {
@@ -22,16 +26,99 @@ function Start() {
 	var food_remain = 50;
 	var pacman_remain = 1;
 	start_time = new Date();
-	for (var i = 0; i < 10; i++) {
+	for (var i = 0; i < 17; i++) {
 		board[i] = new Array();
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
-		for (var j = 0; j < 10; j++) {
+		for (var j = 0; j < 17; j++) {
 			if (
-				(i == 3 && j == 3) ||
-				(i == 3 && j == 4) ||
-				(i == 3 && j == 5) ||
-				(i == 6 && j == 1) ||
-				(i == 6 && j == 2)
+				(j == 0) ||
+				(j == 16) ||
+				(i == 0) ||
+				(i == 16) ||
+				(j == 0 && i == 8)||
+				(j == 1 && i == 8)||
+				(j == 2 && i == 8)||
+				(j == 3 && i == 8)||
+				(j == 2 && i == 2)||
+				(j == 14 && i == 14)||
+				(j == 2 && i == 4)||
+				(j == 2 && i == 5)||
+				(j == 2 && i == 6)||
+				(j == 3 && i == 6)||
+				(j == 2 && i == 10)||
+				(j == 2 && i == 11)||
+				(j == 2 && i == 12)||
+				(j == 2 && i == 14)||
+				(j == 3 && i == 10)||
+				(j == 4 && i == 2)||
+				(j == 4 && i == 4)||
+				(j == 4 && i == 12)||
+				(j == 4 && i == 14)||
+				(j == 5 && i == 2)||
+				(j == 5 && i == 4)||
+				(j == 5 && i == 5)||
+				(j == 5 && i == 6)||
+				(j == 5 && i == 7)||
+				(j == 5 && i == 9)||
+				(j == 5 && i == 10)||
+				(j == 5 && i == 11)||
+				(j == 5 && i == 12)||
+				(j == 5 && i == 14)||
+				(j == 6 && i == 2)||
+				(j == 6 && i == 4)||
+				(j == 6 && i == 12)||
+				(j == 6 && i == 14)||
+				(j == 7 && i == 2)||
+				(j == 7 && i == 6)||
+				(j == 7 && i == 7)||
+				(j == 7 && i == 9)||
+				(j == 7 && i == 10)||
+				(j == 7 && i == 14)||
+				(j == 8 && i == 4)||
+				(j == 8 && i == 6)||
+				(j == 8 && i == 10)||
+				(j == 8 && i == 12)||
+				(j == 9 && i == 2)||
+				(j == 9 && i == 4)||
+				(j == 9 && i == 6)||
+				(j == 9 && i == 7)||
+				(j == 9 && i == 8)||
+				(j == 9 && i == 9)||
+				(j == 9 && i == 10)||
+				(j == 9 && i == 12)||
+				(j == 9 && i == 14)||
+				(j == 10 && i == 2)||
+				(j == 10 && i == 14)||
+				(j == 11 && i == 2)||
+				(j == 11 && i == 4)||
+				(j == 11 && i == 6)||
+				(j == 11 && i == 7)||
+				(j == 11 && i == 8)||
+				(j == 11 && i == 9)||
+				(j == 11 && i == 10)||
+				(j == 11 && i == 12)||
+				(j == 11 && i == 14)||
+				(j == 12 && i == 4)||
+				(j == 12 && i == 7)||
+				(j == 12 && i == 8)||
+				(j == 12 && i == 9)||
+				(j == 12 && i == 12)||
+				(j == 13 && i == 2)||
+				(j == 13 && i == 4)||
+				(j == 13 && i == 5)||
+				(j == 13 && i == 11)||
+				(j == 13 && i == 12)||
+				(j == 13 && i == 14)||
+				(j == 14 && i == 2)||
+				(j == 14 && i == 7)||
+				(j == 14 && i == 8)||
+				(j == 14 && i == 9)||
+				(j == 14 && i == 14)||
+				(j == 15 && i == 4)||
+				(j == 15 && i == 5)||
+				(j == 15 && i == 11)||
+				(j == 15 && i == 12)
+
 			) {
 				board[i][j] = 4;
 			} else {
@@ -103,8 +190,8 @@ function Draw() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
-	for (var i = 0; i < 10; i++) {
-		for (var j = 0; j < 10; j++) {
+	for (var i = 0; i < 18; i++) {
+		for (var j = 0; j < 18; j++) {
 			var center = new Object();
 			center.x = i * 60 + 30;
 			center.y = j * 60 + 30;
@@ -121,7 +208,7 @@ function Draw() {
 			} else if (board[i][j] == 1) {
 				context.beginPath();
 				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "black"; //color
+				context.fillStyle = document.getElementById("5pointscolor").value; //color
 				context.fill();
 			} else if (board[i][j] == 4) {
 				context.beginPath();
