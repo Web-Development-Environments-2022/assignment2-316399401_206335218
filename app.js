@@ -11,6 +11,7 @@ var p5color;
 var p15color;
 var p25color;
 
+
 $(document).ready(function() {
 	context = canvas.getContext("2d");
 	Start();

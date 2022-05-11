@@ -6,6 +6,7 @@
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 		<script type="text/javascript" src="./screens.js"></script>
+		<script type="text/javascript" src="./settings.js"></script>
 		<script type="text/javascript" src="./validateForms.js"></script>
 		<script type="text/javascript" src="./login.js"></script>
 		<script type="text/javascript" src="./about.js"></script>
@@ -23,6 +24,9 @@
 
 	<body>
 		<center><div id="menu">
+			<li><div id="logo" class="paceman">
+				<div id="logo2" class="paceman-eye"></div>
+				<div id="logo3" class="paceman-mouth"></div></li>
 			<li><button id="openHome" onclick="switchScreens('welcome')">Home</button></li>
 			<li><button id="openLogin" onclick="switchScreens('login')">Login</button></li>
 			<li><button id="openReg" onclick="switchScreens('register')">Register</button></li>
@@ -30,8 +34,7 @@
 		</div></center>
 
 		<div id="welcome" style="display:none">
-			<h1>Welcome!</h1>
-			
+			<center><img src="pacman logo.png" width="700" height="400"></center>			
 
 		</div>
 
@@ -39,51 +42,58 @@
 			
 
 			<form id="settingsform">
+				<p>You can only choose the arrows or letters/numbers</p>
 				<label for="KeyUp"><b>Key for moving up</b></label>
-				<input id="keyUp" type="text" value="⇧" onkeypress="myKeyPress('up')" />
+				<input id="keyUp" type="button" value="⇧" onclick="chooseKey('keyUp')" />
 				<br/>
 
 				<label for="KeyDown"><b>Key for moving down</b></label>
+<<<<<<< HEAD
 				<input id="keyDown" type="tex0t" value="⇩" onkeypress="myKeyPress('down')" />
+=======
+				<input id="keyDown" type="button" value="⇩" onclick="chooseKey('keyDown')" />
+>>>>>>> ba9bdb9269882b47363fbc7f026f66c5e0f76d1b
 				<br/>
 
 				<label for="KeyLeft"><b>Key for moving left</b></label>
-				<input id="keyLeft" type="text" value="⇦" onkeypress="myKeyPress('left')" />
+				<input id="keyLeft" type="button" value="⇦" onclick="chooseKey('keyLeft')" />
 				<br/>
 
 				<label for="KeyRight"><b>Key for moving right</b></label>
-				<input id="keyRight" type="text" value="➪" onkeypress="myKeyPress('right')" />
+				<input id="keyRight" type="button" value="➪" onclick="chooseKey('keyRight')" />
 				<br/>
 
 				<label for="5pointscolor"><b>Choose color for 5 points food</b></label>
-				<input id="5pointscolor" type="color" value="#00ffb3" />
+				<input id="5pointscolor" type="color" value="#00ffb3" onchange="changedColor('5pointscolor','point5','view5')"/>
 				<br/>
 				
 				<label for="15pointscolor"><b>Choose color for 15 points food</b></label>
-				<input id="15pointscolor" type="color" value="#67e5fe"/>
+				<input id="15pointscolor" type="color" value="#67e5fe" onchange="changedColor('15pointscolor','point15','view15')"/>
 				<br/>
 
 				<label for="25pointscolor"><b>Choose color for 25 points food</b></label>
-				<input id="25pointscolor" type="color" value="#d8a8ff" />
+				<input id="25pointscolor" type="color" value="#d8a8ff" onchange="changedColor('25pointscolor','point25','view25')" />
 				<br/>
 
 				<p><b>How many food dots would you like to play with?</b></p>
-				<label>50</label><input type="range" id="foodnum" name="foodnum" min="50" max="90" value="50" step="1">
+				<label>50</label><input type="range" id="foodnum" name="foodnum" min="50" max="90" value="50" step="1" onchange="changedValue('foodnum','chosenfoodnum','foodNum','foodnumVal')">
 				<label>90</label>
 				<br/>
-				<label id="chosenfoodnum"> </label>
+				<label id="chosenfoodnum">50 </label>
 				<p><b>How many monsters would you like to play with?</b></p>
 				<label>1</label>
-				<input type="range" id="monsnum" name="monsnum" min="1" max="4" value="2" step="1">
+				<input type="range" id="monsnum" name="monsnum" min="1" max="4" value="2" step="1" onchange="changedValue('monsnum','chosenmonsnum','monstersNum','monsnumVal')">
 				<label>4</label>
 				<br/>
-				<label id="chosenmonsnum"> </label>
+				<label id="chosenmonsnum">2 </label>
 				<p><b>How much time would you like to play? (in seconds)</b></p>
 				<label>60</label>
-				<input type="range" id="monsnum" name="monsnum" min="60" max="900" value="60" step="1">
+				<input type="range" id="time" name="time" min="60" max="900" value="60" step="1" onchange="changedValue('time','chosentime','time','timeVal')">
 				<label>900</label>
 				<br/>
-				<label id="chosentime"> </label>
+				<label id="chosentime">60 </label>
+				<br/>
+				<button id="realstart" onclick="switchScreens('game')">Let Me Play!!!</button>
 
 
 			</form>
@@ -135,9 +145,6 @@
 			
 		</div></center>
 
-		<div class="paceman">
-		<div class="paceman-eye"></div>
-		<div class="paceman-mouth"></div>
 
 		<!-- <div id="about" style="display:none"></div> -->
 		<!-- The Modal -->
@@ -151,7 +158,7 @@
 		
 		</div>
 
-		<div id="game" style="display:none"></div>
+		<!-- <div id="game" style="display:none"></div> -->
 
 
 
@@ -164,6 +171,19 @@
 			<input id="lblTime" type="text" />
 		</div>
 		<div id="game" >
+			<div id="settingsView">
+				<li>Moving up with: <label id="upVal"></label></li>
+				<li>Moving down with: <label id="downVal"></label></li>
+				<li>Moving left with: <label id="leftVal"></label></li>
+				<li>Moving right with: <label id="rightVal"></label></li>
+				<li>5 points color: <div id="view5"></div></li>
+				<li>15 points color: <div id="view15"></div></li>
+				<li>25 points color: <div id="view25"></div></li>
+				<li>time: <label id="timeVal"></label></li>
+				<li>Monsters number: <label id="monsnumVal"></label></li>
+				<li>Food dots number: <label id="foodnumVal"></label></li>
+
+			</div>
 			<canvas id="canvas" height="1000" width="1000"></canvas>
 		</div>
 
@@ -172,6 +192,9 @@
 		<script type="text/javascript">
 
 			$('div').hide();
+			$("#logo").show();
+			$("#logo2").show();
+			$("#logo3").show();
 			$("#menu").show();
 			$('#welcome').show();
 
