@@ -17,6 +17,7 @@ button{
 li{
     display: inline;
     margin: 20px;
+	font: 400 1em/300% 'Handlee', Helvetica, Sans-serif;
 
 }
 
@@ -128,7 +129,7 @@ p.note {
 				right:40px;
 				position:absolute;}
 				.paceman-mouth{
-					background-color:#000000;
+					background-color:#ffffff;
 					position:absolute;
 					width:100%;
 					height:100%;
