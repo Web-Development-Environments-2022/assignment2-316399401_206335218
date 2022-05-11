@@ -1,3 +1,13 @@
+// check if user name already exist
+$(document).ready(function(){
+    $.validator.addMethod('validateUsername', function (user, element) {
+        if (!(user in users)){
+            return true;
+        }
+        else return false;
+    });
+});
+
 $(function() {
     $("#form").validate({
         rules: {
@@ -20,6 +30,7 @@ $(function() {
         },
         username: {
             required: true,
+            validateUsername: true
         }
         },
         messages : {
@@ -40,32 +51,18 @@ $(function() {
             required: "Please enter your birthday"
         },
         username: {
-            required: "Please enter a user name"
+            required: "Please enter a user name",
+            validateUsername: "Username is already exist"
         }
         },
         submitHandler: function(){
+            register()
             switchScreens('login');
             document.getElementById("form").reset();
-
-        }
-    });
-
-});
-
-$(function() {
-    $("#loginform").validate({
-        rules: {
-        username : {
-            required: true,
-        },
-        psw: {
-            required: true,
-        }
-        },
-        submitHandler: function(){
-            switchScreens('settings');
-            document.getElementById("loginform").reset();
-
         }
     });
 });
+
+function register(){
+    users[u] = p;
+}

@@ -7,6 +7,8 @@
 		<script type="text/javascript" src="./app.js"></script>
 		<script type="text/javascript" src="./screens.js"></script>
 		<script type="text/javascript" src="./validateForms.js"></script>
+		<script type="text/javascript" src="./login.js"></script>
+		<script type="text/javascript" src="./about.js"></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Arima+Madurai:wght@500&family=Handlee&display=swap" rel="stylesheet">
@@ -14,6 +16,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
 		
 
 	</head>
@@ -23,7 +26,7 @@
 			<li><button id="openHome" onclick="switchScreens('welcome')">Home</button></li>
 			<li><button id="openLogin" onclick="switchScreens('login')">Login</button></li>
 			<li><button id="openReg" onclick="switchScreens('register')">Register</button></li>
-			<li><button id="openAbout" onclick="switchScreens('about')">About</button></li>
+			<li><button id="openAbout">About</button></li>
 		</div></center>
 
 		<div id="welcome" style="display:none">
@@ -41,7 +44,7 @@
 				<br/>
 
 				<label for="KeyDown"><b>Key for moving down</b></label>
-				<input id="keyDown" type="text" value="⇩" onkeypress="myKeyPress('down')" />
+				<input id="keyDown" type="tex0t" value="⇩" onkeypress="myKeyPress('down')" />
 				<br/>
 
 				<label for="KeyLeft"><b>Key for moving left</b></label>
@@ -136,7 +139,17 @@
 		<div class="paceman-eye"></div>
 		<div class="paceman-mouth"></div>
 
-		<div id="about" style="display:none"></div>
+		<!-- <div id="about" style="display:none"></div> -->
+		<!-- The Modal -->
+		<div id="about" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Some text in the Modal..</p>
+			</div>
+		
+		</div>
 
 		<div id="game" style="display:none"></div>
 
