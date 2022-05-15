@@ -7,24 +7,53 @@ var start_time;
 var time_elapsed;
 var interval;
 var curdiv;
-var p5color;
-var p15color;
-var p25color;
+var p5color = point5;
+var p15color = point15;
+var p25color = point25;
+var p5num;
+var p15num;
+var p25num;
+var sumCount=0;
 
 
 $(document).ready(function() {
 	context = canvas.getContext("2d");
+
 	Start();
 });
 
+function foodDev(){
+	p5num = foodNum*0.6;
+	p15num = foodNum*0.3;
+	p25num = foodNum*0.1;
+	p5num = roundNum(p5num,p15num,p25num);
+	p15num = roundNum(p15num,p5num,p25num);
+	p25num = roundNum(p25num,p5num,p15num);
+
+}
+
+function roundNum(num,num2,num3){
+	if (!Number.isInteger(num)){
+		let newnum = Math.round(num);
+		let newsum = newnum+num2+num3;
+		if(newsum<=foodNum){
+			num=newnum;
+		}
+		else{
+			num=Math.floor(num);
+		}
+	}
+	return num;
+}
 
 
 function Start() {
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
-	var cnt = 100;
-	var food_remain = 50;
+	var cnt = 16*16;
+	var food_remain = foodNum;
+	foodDev();
 	var pacman_remain = 1;
 	start_time = new Date();
 	for (var i = 0; i < 17; i++) {
@@ -125,8 +154,17 @@ function Start() {
 			} else {
 				var randomNum = Math.random();
 				if (randomNum <= (1.0 * food_remain) / cnt) {
+					sumCount++;
 					food_remain--;
-					board[i][j] = 1;
+					if (sumCount<=p5num){
+						board[i][j] = 5;
+					}
+					else if (sumCount>p5num && sumCount<=p15num+p5num){
+						board[i][j] = 15;
+					}
+					else{
+						board[i][j] = 25;
+					}
 				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
 					shape.i = i;
 					shape.j = j;
@@ -140,8 +178,18 @@ function Start() {
 		}
 	}
 	while (food_remain > 0) {
+		sumCount++;
 		var emptyCell = findRandomEmptyCell(board);
-		board[emptyCell[0]][emptyCell[1]] = 1;
+		if (sumCount<=p5num){
+			board[emptyCell[0]][emptyCell[1]] = 5;
+		}
+		else if (sumCount>p5num && sumCount<=p15num+p5num){
+			board[emptyCell[0]][emptyCell[1]] = 15;
+		}
+		else{
+			board[emptyCell[0]][emptyCell[1]] = 25;
+		}
+		
 		food_remain--;
 	}
 	keysDown = {};
@@ -162,12 +210,15 @@ function Start() {
 	interval = setInterval(UpdatePosition, 250);
 }
 
+
+
+
 function findRandomEmptyCell(board) {
-	var i = Math.floor(Math.random() * 9 + 1);
-	var j = Math.floor(Math.random() * 9 + 1);
+	var i = Math.floor(Math.random() * 15 + 1);
+	var j = Math.floor(Math.random() * 15 + 1);
 	while (board[i][j] != 0) {
-		i = Math.floor(Math.random() * 9 + 1);
-		j = Math.floor(Math.random() * 9 + 1);
+		i = Math.floor(Math.random() * 15 + 1);
+		j = Math.floor(Math.random() * 15 + 1);
 	}
 	return [i, j];
 }
@@ -206,12 +257,26 @@ function Draw() {
 				context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
-			} else if (board[i][j] == 1) {
+			} else if (board[i][j] == 5) {
+				sumCount++;
 				context.beginPath();
 				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = document.getElementById("5pointscolor").value; //color
+				context.fillStyle = p5color;
 				context.fill();
-			} else if (board[i][j] == 4) {
+			} else if (board[i][j] == 15) {
+				sumCount++;
+				context.beginPath();
+				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				context.fillStyle = p15color;
+				context.fill();
+			}  else if (board[i][j] == 25) {
+			sumCount++;
+			context.beginPath();
+			context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+			context.fillStyle = p25color;
+			context.fill();
+		} 
+		 else if (board[i][j] == 4) {
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
 				context.fillStyle = "grey"; //color
@@ -220,6 +285,8 @@ function Draw() {
 		}
 	}
 }
+
+
 
 
 
@@ -246,8 +313,14 @@ function UpdatePosition() {
 			shape.i++;
 		}
 	}
-	if (board[shape.i][shape.j] == 1) {
-		score++;
+	if (board[shape.i][shape.j] == 5) {
+		score+=5;
+	}
+	if (board[shape.i][shape.j] == 15) {
+		score+=15;
+	}
+	if (board[shape.i][shape.j] == 25) {
+		score+=25;
 	}
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
@@ -255,7 +328,7 @@ function UpdatePosition() {
 	if (score >= 20 && time_elapsed <= 10) {
 		pac_color = "green";
 	}
-	if (score == 50) {
+	if (score == 50) { 
 		window.clearInterval(interval);
 		window.alert("Game completed");
 	} else {

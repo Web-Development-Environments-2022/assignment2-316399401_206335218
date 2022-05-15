@@ -52,3 +52,8 @@ function changedColor(colorIn, theVar,settingView){
     document.getElementById(settingView).style.backgroundColor = val;
 
 }
+
+document.getElementById("realstart").onclick = function(){
+    switchScreens("game");
+    Start();
+}
