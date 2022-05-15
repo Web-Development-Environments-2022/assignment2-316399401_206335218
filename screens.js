@@ -1,7 +1,7 @@
 function switchScreens(id){
 
-    $('div').hide();
-    $("#menu").show();
+    $('.screen').hide();
+    // $("#menu").show();
     $("#"+id).show();
     
 };

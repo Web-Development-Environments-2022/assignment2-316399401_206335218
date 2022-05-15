@@ -4,11 +4,14 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
 		<script type="text/javascript" src="./screens.js"></script>
-		<script type="text/javascript" src="./settings.js"></script>
+		
 		<script type="text/javascript" src="./validateForms.js"></script>
-		<script type="text/javascript" src="./login.js"></script>
+		<script type="text/javascript" src="./login.js"></script>		
+		
+		<script type="text/javascript" src="./settings.js"></script>		
+		<script type="text/javascript" src="./app.js"></script>
+
 		<script type="text/javascript" src="./about.js"></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,12 +36,12 @@
 			<li><button id="openAbout">About</button></li>
 		</div></center>
 
-		<div id="welcome" style="display:none">
+		<div id="welcome" style="display:none" class="screen">
 			<center><img src="pacman logo.png" width="700" height="400"></center>			
 
 		</div>
 
-		<center><div id="settings">
+		<center><div id="settings" class="screen">
 			
 
 			<form id="settingsform">
@@ -89,14 +92,14 @@
 				<br/>
 				<label id="chosentime">60 </label>
 				<br/>
-				<button id="realstart" onclick="switchScreens('game')">Let Me Play!!!</button>
+				<button id="realstart">Let Me Play!!!</button>
 
 
 			</form>
 
 		</div></center>
 
-		<center><div id="login">
+		<center><div id="login" class="screen">
 			<form id="loginform">
 				<label for="username"><b>User Name</b></label>
 				<input class="forminput" type="text" placeholder="Enter User Name" name="username" id="username" required>
@@ -111,7 +114,7 @@
 
 		</div></center>
 
-		<center><div id="register">
+		<center><div id="register" class="screen">
 
 			<p><b>Please fill in this form to create an account</b></p>
 			<form id="form" >
@@ -158,16 +161,17 @@
 
 
 
-		<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
-		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="game" >
-			<div id="settingsView">
+		
+		<div id="game" class="screen">
+			<div id="score">
+				<label for="lblScore">SCORE:</label>
+				<input id="lblScore" type="text" />
+			</div>
+			<div id="time">
+				<label for="lblTime">TIME:</label>
+				<input id="lblTime" type="text" />
+			</div>
+			<!-- <div id="settingsView">
 				<li>Moving up with: <label id="upVal"></label></li>
 				<li>Moving down with: <label id="downVal"></label></li>
 				<li>Moving left with: <label id="leftVal"></label></li>
@@ -179,7 +183,7 @@
 				<li>Monsters number: <label id="monsnumVal"></label></li>
 				<li>Food dots number: <label id="foodnumVal"></label></li>
 
-			</div>
+			</div> -->
 			<canvas id="canvas" height="1000" width="1000"></canvas>
 		</div>
 
@@ -187,11 +191,11 @@
 
 		<script type="text/javascript">
 
-			$('div').hide();
-			$("#logo").show();
-			$("#logo2").show();
-			$("#logo3").show();
-			$("#menu").show();
+			$('.screen').hide();
+			// $("#logo").show();
+			// $("#logo2").show();
+			// $("#logo3").show();
+			// $("#menu").show();
 			$('#welcome').show();
 
 		</script>
