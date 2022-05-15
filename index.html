@@ -2,23 +2,11 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css" />
-
-		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
-		<script type="text/javascript" src="./screens.js"></script>
-		<script type="text/javascript" src="./settings.js"></script>
-		<script type="text/javascript" src="./validateForms.js"></script>
-		<script type="text/javascript" src="./login.js"></script>
-		<script type="text/javascript" src="./about.js"></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Arima+Madurai:wght@500&family=Handlee&display=swap" rel="stylesheet">
 		<link type="text/css" rel="Stylesheet" href="jquery.validity.css" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
-		
 
 	</head>
 
@@ -99,11 +87,11 @@
 		<center><div id="login">
 			<form id="loginform">
 				<label for="username"><b>User Name</b></label>
-				<input class="forminput" type="text" placeholder="Enter User Name" name="username" id="username" required>
+				<input class="forminput" type="text" placeholder="Enter User Name" name="username" id="username_login" required>
 				<br/>
 
 				<label for="psw"><b>Password</b></label>
-				<input class="forminput" type="password" placeholder="Enter Password" name="psw" id="psw" required>
+				<input class="forminput" type="password" placeholder="Enter Password" name="psw" id="psw_login" required>
 				<br/>
 				<button id="start" type="submit">Let's Get Started!</button>
 			</form>
@@ -120,11 +108,11 @@
 				<br/>
 
 				<label for="username"><b>User Name</b></label>
-				<input class="forminput" type="text" placeholder="Enter User Name" name="username" id="username" required>
+				<input class="forminput" type="text" placeholder="Enter User Name" name="username" id="username_register" required>
 				<br/>
 
 				<label for="psw"><b>Password</b></label>
-				<input class="forminput" type="password" placeholder="Enter Password" name="psw" id="psw" required>
+				<input class="forminput" type="password" placeholder="Enter Password" name="psw" id="psw_register" required>
 				<br/>
 
 				<label for="email"><b>Email</b></label>
@@ -144,16 +132,16 @@
 
 		<!-- <div id="about" style="display:none"></div> -->
 		<!-- The Modal -->
-		<div id="about" class="modal">
+		<div id="myModal" class="modal">
 
 			<!-- Modal content -->
 			<div class="modal-content">
-			<span class="close">&times;</span>
-			<p>Some text in the Modal..</p>
+				<span class="close">&times;</span>
+				<p>This game was made by Stav Keidar and Noa Birenboim</p>
 			</div>
 		
 		</div>
-
+	
 		<!-- <div id="game" style="display:none"></div> -->
 
 
@@ -183,6 +171,17 @@
 			<canvas id="canvas" height="1000" width="1000"></canvas>
 		</div>
 
+		<script src="./jquery-3.4.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+		<script type="text/javascript" src="./app.js"></script>
+		<script type="text/javascript" src="./screens.js"></script>
+		<script type="text/javascript" src="./register.js"></script>
+		<script type="text/javascript" src="./login.js"></script>
+		<script type="text/javascript" src="./about.js"></script>
+		<script type="text/javascript" src="./settings.js"></script>
+
 
 
 		<script type="text/javascript">
@@ -193,7 +192,25 @@
 			$("#logo3").show();
 			$("#menu").show();
 			$('#welcome').show();
+			$('#info').show();
 
 		</script>
+		
+
 	</body>
+	
+	<footer id="info">
+		<center>
+			<div class="footer-contact">	
+			<a>Authors: Stav Keidar & Noa Birenboim</a></br>
+			<a>Contact Us: </a>
+			<a href="mailto:stavke@post.bgu.ac.il">stavke@post.bgu.ac.il</a>
+		
+			<a href="mailto:noabiren@post.bgu.ac.il">noabiren@post.bgu.ac.il</a></h4></p>
+	
+			</div>
+		</center>
+
+	</footer>
+
 </html>

@@ -1,5 +1,5 @@
 // Get the modal
-var modal = document.getElementById("about");
+var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("openAbout");
@@ -23,3 +23,9 @@ window.onclick = function(event) {
       modal.style.display = "none";
   }
 }
+
+document.addEventListener('keyup', function(event){
+    if (event.keyCode == 27){
+        document.getElementById("myModal").remove()
+    }
+})

@@ -1,10 +1,14 @@
 // check if user name already exist
 $(document).ready(function(){
+    localStorage.setItem('k', 'k');
+
     $.validator.addMethod('validateUsername', function (user, element) {
-        if (!(user in users)){
+        val = localStorage.getItem(user)
+        pass = localStorage[val]
+        if (pass == null){ // there's no username with this name
             return true;
         }
-        else return false;
+        return false;
     });
 });
 
@@ -36,7 +40,7 @@ $(function() {
         messages : {
         fullname: {
             required: "Please enter your full name",
-            pattern: "Name should not include numbers",
+            pattern: "Name should not include numbers"
         },
         psw: {
             required: "Please enter a password",
@@ -64,5 +68,7 @@ $(function() {
 });
 
 function register(){
-    users[u] = p;
+    let user = document.getElementById("username_register").value;
+    let pass = document.getElementById("psw_register").value;
+    localStorage.setItem(user,pass);
 }

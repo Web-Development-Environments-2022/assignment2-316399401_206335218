@@ -1,15 +1,17 @@
 var current_username;
-var users = {"k": "k"};
+// var users = {"k": "k"};
 
 // check if password belong to user
 $(document).ready(function(){
+    localStorage.setItem('k', 'k');
+
     $.validator.addMethod('validateUser', function (psw, element) {
-        u = document.getElementById("username").value;
-        p = users[u]
-        if(p != psw){
-            return false;
+        let u = document.getElementById("username_login").value;
+        let p = localStorage.getItem(u)
+        if(p == psw){
+            return true;
         }
-        return true;
+        return false;
     });
 });
 
@@ -44,6 +46,6 @@ $(function() {
 
 // save the current user
 function login(){
-    let u = document.getElementById("username").value;
+    let u = document.getElementById("username_login").value;
     current_username = u;
 }

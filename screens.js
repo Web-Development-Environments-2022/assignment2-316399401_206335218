@@ -3,6 +3,7 @@ function switchScreens(id){
     $('div').hide();
     $("#menu").show();
     $("#"+id).show();
+    // $("#info").show();
     
 };
 
