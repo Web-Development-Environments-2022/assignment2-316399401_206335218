@@ -21,6 +21,14 @@ var point25="#d8a8ff";
     
 // }
 
+function setKey(keyname, settingView, code){
+    var char = keyPressed(code);
+    document.getElementById(keyname).value = char;
+    document.getElementById(settingView).innerHTML = char;
+    chosenKeys[keyname]= code;
+
+}
+
 function chooseKey(keyname){
     $(document).keydown(function(event){
         if (keyname == "keyUp"){
