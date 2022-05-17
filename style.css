@@ -24,8 +24,16 @@ li{
 .settingsView{
 	display: block;
 	font: 400 1.25em/100% 'Handlee', Helvetica, Sans-serif;
+}
+
+.aaa{
+	font: 400 1.25em/100% 'Handlee', Helvetica, Sans-serif;
+	float: right;
+	text-align: left;
+	width:25%;  
 
 }
+
 
 #lblScore, #lblTime, #lblCurUser, #lblLives{
 	font: 400 1.25em/100% 'Handlee', Helvetica, Sans-serif;
@@ -36,7 +44,7 @@ li{
 
 }
 
-#register, #login{
+#register, #login, #play, #newGame{
     font: 400 1em/300% 'Handlee', Helvetica, Sans-serif;
     color: #FFA0C9;
 	border-top: 1px solid #FFD2D2;

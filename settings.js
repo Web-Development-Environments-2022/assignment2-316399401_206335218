@@ -36,10 +36,6 @@ function chooseKey(keyname){
                 return;
             }
             setKey("keyUp","upVal",code);
-            // var char = keyPressed(code);
-            // document.getElementById("keyUp").value = char;
-            // document.getElementById("upVal").innerHTML = char;
-            // chosenKeys["keyUp"]= code;
         }
         else if (keyname == "keyDown"){
             document.getElementById("keyDown").value = "";
@@ -50,10 +46,6 @@ function chooseKey(keyname){
                 $(document).unbind();
                 return;
             }
-            // var char = keyPressed(code);
-            // document.getElementById("keyDown").value = char;
-            // document.getElementById("downVal").innerHTML = char;
-            // chosenKeys["keyDown"]= code;
             setKey("keyDown","downVal",code);
 
         }
@@ -66,10 +58,6 @@ function chooseKey(keyname){
                 $(document).unbind();
                 return;
             }
-            // var char = keyPressed(code);
-            // document.getElementById("keyLeft").value = char;
-            // document.getElementById("leftVal").innerHTML = char;
-            // chosenKeys["keyLeft"]= code;
             setKey("keyLeft","leftVal",code);
 
         }
@@ -82,10 +70,6 @@ function chooseKey(keyname){
                 $(document).unbind();
                 return;
             }
-            // var char = keyPressed(code);
-            // document.getElementById("keyRight").value = char;
-            // document.getElementById("rightVal").innerHTML = char;
-            // chosenKeys["keyRight"]= code;
             setKey("keyRight","rightVal",code);
 
         }
@@ -127,23 +111,8 @@ function changedColor(colorIn, theVar,settingView){
 
 document.getElementById("realstart").onclick = function(){
     switchScreens("game");
+    // document.getElementById("settingsform").reset();
     Start();
-}
-
-
-function change(){
-    soundOn = document.getElementById("soundOn-img");
-    soundOff = document.getElementById("soundOff-img");
-    if(soundOff.style.display == "block"){
-        soundOff.style.display = "none";
-        soundOn.style.display = "block";
-        gameSound.muted = true;
-    }
-    else{
-        soundOff.style.display = "block";
-        soundOn.style.display = "none";
-        gameSound.muted = false;
-    }
 }
 
 function randomVal(){
@@ -180,4 +149,26 @@ function RandomInt(x,y) {
     minVal = Math.ceil(x);
     maxVal = Math.floor(y);
     return Math.floor(Math.random() * (maxVal - minVal + 1)) + minVal;
+}
+
+function resetSetting(){
+    monstersNum = 2;
+    time = 60;
+    foodNum= 50;
+    point5 = "#00ffb3";
+    point15="#67e5fe";
+    point25="#d8a8ff";
+    setKey("keyUp", "upVal", 38);
+    setKey("keyDown", "downVal", 40);
+    setKey("keyLeft", "leftVal", 37);
+    setKey("keyRight", "rightVal", 39);
+    document.getElementById("monsnum").value = monstersNum;
+    document.getElementById("chosenmonsnum").innerHTML = monstersNum;
+    document.getElementById("foodnum").value = foodNum;
+    document.getElementById("chosenfoodnum").innerHTML = foodNum;
+    document.getElementById("5pointscolor").value = point5;
+    document.getElementById("15pointscolor").value = point15;
+    document.getElementById("25pointscolor").value = point25;
+    document.getElementById("time").value = time;
+    document.getElementById("chosentime").innerHTML = time;
 }

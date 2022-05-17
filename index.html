@@ -32,7 +32,7 @@
 			
 
 			<form id="settingsform" onsubmit="return false;">
-				<p>Please choose only arrows / letters / numbers</p>
+				<p>You can only choose the arrows or letters/numbers</p>
 				<label for="KeyUp"><b>Key for moving up</b></label>
 				<input id="keyUp" type="button" value="⇧" onclick="chooseKey('keyUp')" />
 				<br/>
@@ -82,10 +82,6 @@
 				<button id="realstart">Let Me Play!!!</button>
 				<button id="randomsetting" onclick="randomVal()">Random</button>
 			</form>
-			<!-- <center>
-				<img id="soundOff-img" src="soundOff.png" width="100" height="100" onclick="change()">
-				<img id="soundOn-img" src="soundOn.png" width="100" height="100" onclick="change()">
-			</center> -->
 
 		</div></center>
 
@@ -184,7 +180,7 @@
 				<label for="lblLives">LIVES LEFT:</label>
 				<input id="lblLives" type="text" />
 			</div>
-			<div id="settingsView">
+			<div id="settingsView" class="aaa">
 				<li class="settingsView">Moving up with: <label id="upVal">⇧</label></li>
 				<li class="settingsView">Moving down with: <label id="downVal">⇩</label></li>
 				<li class="settingsView">Moving left with: <label id="leftVal">⇦</label></li>
@@ -197,7 +193,14 @@
 				<li class="settingsView">Food dots number: <label id="foodnumVal">50</label></li>
 
 			</div>
-			<canvas id="canvas" height="680" width="680"></canvas>
+			<center><canvas id="canvas" height="680" width="680"></canvas></center> 
+			<audio id = "gameSound" preload="auto">
+				<source src = "packman_game_music.mp3" type="audio/mpeg"/>
+			</audio>
+			<center><div class="gameButtoms">
+				<button id="play" onclick="togglePlay()" > &#9658;&#10074;&#10074; Music</button>
+				<button id="newGame" onclick="switchScreens('settings')" type="button">New Game</button>
+			</div></center>
 		</div>
 
 		<script src="./jquery-3.4.1.slim.min.js"></script>

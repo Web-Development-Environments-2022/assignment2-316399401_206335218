@@ -18,7 +18,7 @@ var monsCount;
 var pacmanDirection="RIGHT";
 var lives ;
 var foodCollected;
-// var gameSound = new Audio("pacman_game_music.mp3");
+var music_play = document.getElementById("gameSound");
 
 
 $(document).ready(function() {
@@ -52,7 +52,6 @@ function roundNum(num,num2,num3){
 
 
 function Start() {
-	// gameSound.play();
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
@@ -65,6 +64,9 @@ function Start() {
 	foodDev();
 	var pacman_remain = 1;
 	start_time = new Date();
+	music_play.loop = true;
+	music_play.currentTime = 0;
+	music_play.play();
 	for (var i = 0; i < 17; i++) {
 		board[i] = new Array();
 		for (var j = 0; j < 17; j++) {
@@ -175,7 +177,6 @@ function Start() {
 					monsCount++;
 				}
 			else {
-
 				var randomNum = Math.random();
 				if (randomNum <= (1.0 * food_remain) / cnt) {
 					sumCount++;
@@ -216,6 +217,10 @@ function Start() {
 		
 		food_remain--;
 	}
+	// add clock to board
+	var c = findRandomEmptyCell(board);
+	board[c[0]][c[1]] = 10;
+
 	keysDown = {};
 	addEventListener(
 		"keydown",
@@ -234,7 +239,7 @@ function Start() {
 	if (pacmanPos == undefined){
 		pacmanPos = new Object();
 	}
-	interval = setInterval(UpdatePosition, 65);
+	interval = setInterval(UpdatePosition, 80);
 	console.log(board);
 }
 
@@ -346,6 +351,11 @@ function Draw() {
 				orangeImg.src = "orange-ghost.png"
     			context.drawImage(orangeImg, center.x - 20, center.y - 20, 40, 40);
 			}
+			else if (board[i][j] == 10){ //clock
+				var clockImg = new Image();
+				clockImg.src = "clock.png"
+    			context.drawImage(clockImg, center.x - 20, center.y - 20, 40, 40);
+			}
 		}
 	}
 }
@@ -398,13 +408,23 @@ function UpdatePosition() {
 		foodCollected++;
 
 	}
+	// if (board[pacmanPos.i][pacmanPos.j] == 10){
+	// 	time_elapsed += 30;
+	// }
 	if (board[pacmanPos.i][pacmanPos.j] == 6 || board[pacmanPos.i][pacmanPos.j] == 7 || board[pacmanPos.i][pacmanPos.j] == 8 || board[pacmanPos.i][pacmanPos.j] == 9){
-		
+		if (board[pacmanPos.i][pacmanPos.j] == 6){
+			lives--;
+			score -= 30;
+		}
 		lives--;
 		if(lives==0){
 			window.alert("Looser!!")
+			music_play.pause();
 		}
 		score-=10;
+		if (score < 0){
+			score = 0;
+		}
 
 	}
 	board[pacmanPos.i][pacmanPos.j] = 2;
@@ -416,8 +436,21 @@ function UpdatePosition() {
 	if (time_elapsed == 0 || foodCollected == foodNum) { 
 		window.clearInterval(interval);
 		window.alert("Game completed");
+		music_play.pause();
+		// add return becuase time continue
+		return;
 	} else {
 		Draw();
 	}
 }
+
+function togglePlay() {
+	if (music_play.paused) {
+		music_play.play();
+	}
+	else {
+		music_play.pause();
+	}
+};
+
 
