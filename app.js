@@ -16,6 +16,7 @@ var p25num;
 var sumCount=0;
 var monsCount=0;
 var pacmanDirection="RIGHT";
+var gameSound = new Audio("pacman_game_music.mp3");
 
 
 $(document).ready(function() {
@@ -49,6 +50,7 @@ function roundNum(num,num2,num3){
 
 
 function Start() {
+	gameSound.play(); //check if work
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";

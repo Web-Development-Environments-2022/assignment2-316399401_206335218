@@ -29,6 +29,6 @@ window.onclick = function(event) {
 
 document.addEventListener('keyup', function(event){
     if (event.keyCode == 27){
-        document.getElementById("myModal").remove()
+        modal.style.display = "none";
     }
 })
