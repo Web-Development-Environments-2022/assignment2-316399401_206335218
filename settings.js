@@ -1,4 +1,4 @@
-var chosenKeys = {"keyUp":38,"keyDown":40,"keyLeft":37,"keyRight":39}
+var chosenKeys = {"keyUp":38,"keyDown":40,"keyLeft":37,"keyRight":39};
 var monstersNum = 2;
 var time = 60;
 var foodNum= 50;
@@ -7,19 +7,14 @@ var point15="#67e5fe";
 var point25="#d8a8ff";
 
 
-// function chooseKey(keyname){
-//     document.addEventListener("keydown", function(event){
-//         document.getElementById(keyname).value = "";
-//         var code = event.keyCode;
-//         var char = keyPressed(code);
-//         document.getElementById(keyname).value = char;
-//         chosenKeys[keyname]= code;
-        
-//     })
-    
-//     return;
-    
-// }
+function setKey(keyname, settingView, code){
+    var char = keyPressed(code);
+    document.getElementById(keyname).value = char;
+    document.getElementById(settingView).innerHTML = char;
+    chosenKeys[keyname]= code;
+
+}
+
 
 function chooseKey(keyname){
     $(document).keydown(function(event){
@@ -28,26 +23,30 @@ function chooseKey(keyname){
             var code = event.keyCode;
             if (code==chosenKeys["keyDown"] || code==chosenKeys["keyRight"] || code==chosenKeys["keyLeft"]){
                 alert("You already chose this key, please choose another one :)")
+                setKey("keyUp","upVal",chosenKeys["keyUp"]);
                 $(document).unbind();
                 return;
             }
-            var char = keyPressed(code);
-            document.getElementById("keyUp").value = char;
-            document.getElementById("upVal").innerHTML = char;
-            chosenKeys["keyUp"]= code;
+            setKey("keyUp","upVal",code);
+            // var char = keyPressed(code);
+            // document.getElementById("keyUp").value = char;
+            // document.getElementById("upVal").innerHTML = char;
+            // chosenKeys["keyUp"]= code;
         }
         else if (keyname == "keyDown"){
             document.getElementById("keyDown").value = "";
             var code = event.keyCode;
             if (code==chosenKeys["keyUp"] || code==chosenKeys["keyRight"] || code==chosenKeys["keyLeft"]){
                 alert("You already chose this key, please choose another one :)")
+                setKey("keyDown","downVal",chosenKeys["keyDown"]);
                 $(document).unbind();
                 return;
             }
-            var char = keyPressed(code);
-            document.getElementById("keyDown").value = char;
-            document.getElementById("downVal").innerHTML = char;
-            chosenKeys["keyDown"]= code;
+            // var char = keyPressed(code);
+            // document.getElementById("keyDown").value = char;
+            // document.getElementById("downVal").innerHTML = char;
+            // chosenKeys["keyDown"]= code;
+            setKey("keyDown","downVal",code);
 
         }
         else if (keyname == "keyLeft"){
@@ -55,13 +54,15 @@ function chooseKey(keyname){
             var code = event.keyCode;
             if (code==chosenKeys["keyDown"] || code==chosenKeys["keyRight"] || code==chosenKeys["keyUp"]){
                 alert("You already chose this key, please choose another one :)")
+                setKey("keyLeft","leftVal",chosenKeys["keyLeft"]);
                 $(document).unbind();
                 return;
             }
-            var char = keyPressed(code);
-            document.getElementById("keyLeft").value = char;
-            document.getElementById("leftVal").innerHTML = char;
-            chosenKeys["keyLeft"]= code;
+            // var char = keyPressed(code);
+            // document.getElementById("keyLeft").value = char;
+            // document.getElementById("leftVal").innerHTML = char;
+            // chosenKeys["keyLeft"]= code;
+            setKey("keyLeft","leftVal",code);
 
         }
         else if (keyname == "keyRight"){
@@ -69,13 +70,15 @@ function chooseKey(keyname){
             var code = event.keyCode;
             if (code==chosenKeys["keyDown"] || code==chosenKeys["keyUp"] || code==chosenKeys["keyLeft"]){
                 alert("You already chose this key, please choose another one :)")
+                setKey("keyRight","rightVal",chosenKeys["keyRight"]);
                 $(document).unbind();
                 return;
             }
-            var char = keyPressed(code);
-            document.getElementById("keyRight").value = char;
-            document.getElementById("rightVal").innerHTML = char;
-            chosenKeys["keyRight"]= code;
+            // var char = keyPressed(code);
+            // document.getElementById("keyRight").value = char;
+            // document.getElementById("rightVal").innerHTML = char;
+            // chosenKeys["keyRight"]= code;
+            setKey("keyRight","rightVal",code);
 
         }
         $(document).unbind();
@@ -119,6 +122,7 @@ document.getElementById("realstart").onclick = function(){
     Start();
 }
 
+
 function change(){
     soundOn = document.getElementById("soundOn-img");
     soundOff = document.getElementById("soundOff-img");
@@ -135,14 +139,10 @@ function change(){
 }
 
 function randomVal(){
-    chosenKeys['keyUp'] = 38;
-    // keyPressed(chosenKeys['keyUp']);
-    chosenKeys['keyDown'] = 40;
-    // keyPressed(chosenKeys['keyDown']);
-    chosenKeys['keyLeft'] = 37;
-    // keyPressed(chosenKeys['keyLeft']);
-    chosenKeys['keyRight'] = 39;
-    // keyPressed(chosenKeys['keyRight']);
+    setKey("keyUp", "upVal", 38);
+    setKey("keyDown", "downVal", 40);
+    setKey("keyLeft", "leftVal", 37);
+    setKey("keyRight", "rightVal", 39);
     monstersNum = RandomInt(1,4);
     document.getElementById("monsnum").value = monstersNum;
     document.getElementById("chosenmonsnum").innerHTML = monstersNum;
@@ -159,6 +159,8 @@ function randomVal(){
     document.getElementById("time").value = time;
     document.getElementById("chosentime").innerHTML = time;
 }
+
+
 
 function RandomColor() {
     var color = '#';

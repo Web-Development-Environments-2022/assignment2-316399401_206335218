@@ -24,6 +24,7 @@ li{
 .settingsView{
 	display: block;
 	font: 400 1.25em/100% 'Handlee', Helvetica, Sans-serif;
+
 }
 
 #lblScore, #lblTime, #lblCurUser, #lblLives{

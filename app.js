@@ -16,7 +16,6 @@ var p25num;
 var sumCount=0;
 var monsCount=0;
 var pacmanDirection="RIGHT";
-var gameSound = new Audio("pacman_game_music.mp3");
 
 
 $(document).ready(function() {
@@ -50,7 +49,7 @@ function roundNum(num,num2,num3){
 
 
 function Start() {
-	gameSound.play(); //check if work
+	// gameSound.play();
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
@@ -247,16 +246,16 @@ function findRandomEmptyCell(board) {
 }
 
 function GetKeyPressed() {
-	if (keysDown[38]) {
+	if (keysDown[chosenKeys["keyUp"]]) {
 		return 1;
 	}
-	if (keysDown[40]) {
+	if (keysDown[chosenKeys["keyDown"]]) {
 		return 2;
 	}
-	if (keysDown[37]) {
+	if (keysDown[chosenKeys["keyLeft"]]) {
 		return 3;
 	}
-	if (keysDown[39]) {
+	if (keysDown[chosenKeys["keyRight"]]) {
 		return 4;
 	}
 }
