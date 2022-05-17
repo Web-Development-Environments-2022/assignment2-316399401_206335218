@@ -1,5 +1,5 @@
 var context;
-var shape1 = new Object();
+var pacmanPos = new Object();
 var board;
 var score;
 var pac_color;
@@ -7,15 +7,18 @@ var start_time;
 var time_elapsed;
 var interval;
 var curdiv;
-var p5color = point5;
-var p15color = point15;
-var p25color = point25;
+var p5color;
+var p15color;
+var p25color;
 var p5num;
 var p15num;
 var p25num;
 var sumCount=0;
 var monsCount=0;
 var pacmanDirection="RIGHT";
+var lives = 5 ;
+var foodCollected=0;
+// var gameSound = new Audio("pacman_game_music.mp3");
 
 
 $(document).ready(function() {
@@ -184,8 +187,8 @@ function Start() {
 						board[i][j] = 25;
 					}
 				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
-					shape1.i = i;
-					shape1.j = j;
+					pacmanPos.i = i;
+					pacmanPos.j = j;
 					pacman_remain--;
 					board[i][j] = 2;
 				} else {
@@ -225,10 +228,10 @@ function Start() {
 		},
 		false
 	);
-	if (shape1 == undefined){
-		shape1 = new Object();
+	if (pacmanPos == undefined){
+		pacmanPos = new Object();
 	}
-	interval = setInterval(UpdatePosition, 50);
+	interval = setInterval(UpdatePosition, 65);
 	console.log(board);
 }
 
@@ -265,14 +268,18 @@ function Draw() {
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
 	lblCurUser.value = current_username;
+	lblLives.value - lives;
+	p5color = point5;
+	p15color = point15;
+	p25color = point25;
 	for (var i = 0; i < 17; i++) {
 		for (var j = 0; j < 17; j++) {
 			var center = new Object();
 			center.x = i * 40 + 20;
 			center.y = j * 40 + 20;
 			if (board[i][j] == 2) {
-				shape1.i = i;
-				shape1.j = j;
+				pacmanPos.i = i;
+				pacmanPos.j = j;
 				var pacmanImg = new Image();
 				if (pacmanDirection == "RIGHT"){
 					pacmanImg.src = "Pac-Man-right.png"
@@ -345,51 +352,65 @@ function Draw() {
 
 
 function UpdatePosition() {
-	if (shape1.i==undefined || shape1.j==undefined){
+	if (pacmanPos.i==undefined || pacmanPos.j==undefined){
 		return;
 	}
-	board[shape1.i][shape1.j] = 0;
+	board[pacmanPos.i][pacmanPos.j] = 0;
 	var x = GetKeyPressed();
 	if (x == 1) { //up
-		if (shape1.j > 0 && board[shape1.i][shape1.j - 1] != 4) {
-			shape1.j--;
+		if (pacmanPos.j > 0 && board[pacmanPos.i][pacmanPos.j - 1] != 4) {
+			pacmanPos.j--;
 			pacmanDirection = "UP";
 		}
 	}
 	if (x == 2) { //down
-		if (shape1.j < 16 && board[shape1.i][shape1.j + 1] != 4) {
-			shape1.j++;
+		if (pacmanPos.j < 16 && board[pacmanPos.i][pacmanPos.j + 1] != 4) {
+			pacmanPos.j++;
 			pacmanDirection = "DOWN";
 		}
 	}
 	if (x == 3) { //left
-		if (shape1.i > 0 && board[shape1.i - 1][shape1.j] != 4) {
-			shape1.i--;
+		if (pacmanPos.i > 0 && board[pacmanPos.i - 1][pacmanPos.j] != 4) {
+			pacmanPos.i--;
 			pacmanDirection = "LEFT";
 		}
 	}
 	if (x == 4) { //right
-		if (shape1.i < 16 && board[shape1.i + 1][shape1.j] != 4) {
-			shape1.i++;
+		if (pacmanPos.i < 16 && board[pacmanPos.i + 1][pacmanPos.j] != 4) {
+			pacmanPos.i++;
 			pacmanDirection = "RIGHT";
 		}
 	}
-	if (board[shape1.i][shape1.j] == 5) {
+	if (board[pacmanPos.i][pacmanPos.j] == 5) {
 		score+=5;
+		foodCollected++;
 	}
-	if (board[shape1.i][shape1.j] == 15) {
+	if (board[pacmanPos.i][pacmanPos.j] == 15) {
 		score+=15;
+		foodCollected++;
+
 	}
-	if (board[shape1.i][shape1.j] == 25) {
+	if (board[pacmanPos.i][pacmanPos.j] == 25) {
 		score+=25;
+		foodCollected++;
+
 	}
-	board[shape1.i][shape1.j] = 2;
+	if (board[pacmanPos.i][pacmanPos.j] == 6 || board[pacmanPos.i][pacmanPos.j] == 7 || board[pacmanPos.i][pacmanPos.j] == 8 || board[pacmanPos.i][pacmanPos.j] == 9){
+		
+		lives--;
+		if(lives==0){
+			window.alert("Looser!!")
+		}
+		score-=10;
+
+	}
+	board[pacmanPos.i][pacmanPos.j] = 2;
 	var currentTime = new Date();
 	time_elapsed = time - (currentTime - start_time) / 1000;
 	time_elapsed = Math.floor(time_elapsed);
 
 
-	if (time_elapsed == 0) { 
+	if (time_elapsed == 0 || foodCollected == foodNum) { 
 		window.clearInterval(interval);
 		window.alert("Game completed");
 	} else {
