@@ -13,11 +13,11 @@ var p25color;
 var p5num;
 var p15num;
 var p25num;
-var sumCount=0;
-var monsCount=0;
+var sumCount;
+var monsCount;
 var pacmanDirection="RIGHT";
-var lives = 5 ;
-var foodCollected=0;
+var lives ;
+var foodCollected;
 // var gameSound = new Audio("pacman_game_music.mp3");
 
 
@@ -58,7 +58,10 @@ function Start() {
 	pac_color = "yellow";
 	var cnt = 16*16;
 	var food_remain = foodNum;
-
+	sumCount=0;
+	foodCollected=0;
+	lives=5;
+	monsCount=0;
 	foodDev();
 	var pacman_remain = 1;
 	start_time = new Date();
@@ -268,7 +271,7 @@ function Draw() {
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
 	lblCurUser.value = current_username;
-	lblLives.value - lives;
+	lblLives.value = lives.toString();
 	p5color = point5;
 	p15color = point15;
 	p25color = point25;
