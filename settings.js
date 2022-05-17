@@ -57,3 +57,56 @@ document.getElementById("realstart").onclick = function(){
     switchScreens("game");
     Start();
 }
+
+function change(){
+    soundOn = document.getElementById("soundOn-img");
+    soundOff = document.getElementById("soundOff-img");
+    if(soundOff.style.display == "block"){
+        soundOff.style.display = "none";
+        soundOn.style.display = "block";
+        gameSound.muted = true;
+    }
+    else{
+        soundOff.style.display = "block";
+        soundOn.style.display = "none";
+        gameSound.muted = false;
+    }
+}
+
+function randomVal(){
+    chosenKeys['keyUp'] = 38;
+    // keyPressed(chosenKeys['keyUp']);
+    chosenKeys['keyDown'] = 40;
+    // keyPressed(chosenKeys['keyDown']);
+    chosenKeys['keyLeft'] = 37;
+    // keyPressed(chosenKeys['keyLeft']);
+    chosenKeys['keyRight'] = 39;
+    // keyPressed(chosenKeys['keyRight']);
+    monstersNum = RandomInt(1,4);
+    document.getElementById("monsnum").value = monstersNum;
+    document.getElementById("chosenmonsnum").innerHTML = monstersNum;
+    foodNum = RandomInt(50,90);
+    document.getElementById("foodnum").value = foodNum;
+    document.getElementById("chosenfoodnum").innerHTML = foodNum;
+    point5 = RandomColor();
+    document.getElementById("5pointscolor").value = point5;
+    point15 = RandomColor();
+    document.getElementById("15pointscolor").value = point15;
+    point25 = RandomColor();
+    document.getElementById("25pointscolor").value = point25;
+    time = RandomInt(60,900);
+    document.getElementById("time").value = time;
+    document.getElementById("chosentime").innerHTML = time;
+}
+
+function RandomColor() {
+    var color = '#';
+    color += Math.floor(Math.random()*16777215).toString(16)
+    return color;
+}
+
+function RandomInt(x,y) {
+    minVal = Math.ceil(x);
+    maxVal = Math.floor(y);
+    return Math.floor(Math.random() * (maxVal - minVal + 1)) + minVal;
+}

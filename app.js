@@ -14,12 +14,13 @@ var p5num;
 var p15num;
 var p25num;
 var sumCount=0;
+var gameSound = new Audio("pacman_game_music.mp3");
 
 
 $(document).ready(function() {
 	context = canvas.getContext("2d");
 
-	Start();
+	// Start();
 });
 
 function foodDev(){
@@ -48,6 +49,7 @@ function roundNum(num,num2,num3){
 
 
 function Start() {
+	gameSound.play(); //check if work
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
