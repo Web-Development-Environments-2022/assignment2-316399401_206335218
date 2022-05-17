@@ -29,7 +29,7 @@
 		<center><div id="settings" class="screen">
 			
 
-			<form id="settingsform">
+			<form id="settingsform" onsubmit="return false;">
 				<p>You can only choose the arrows or letters/numbers</p>
 				<label for="KeyUp"><b>Key for moving up</b></label>
 				<input id="keyUp" type="button" value="⇧" onclick="chooseKey('keyUp')" />
@@ -148,40 +148,49 @@
 
 		
 		<div id="game" class="screen">
-			<div id="score">
+			<div id="score" class="settingsView">
 				<label for="lblScore">SCORE:</label>
 				<input id="lblScore" type="text" />
 			</div>
-			<div id="time">
+			<div id="time" class="settingsView">
 				<label for="lblTime">TIME:</label>
 				<input id="lblTime" type="text" />
 			</div>
-			<!-- <div id="settingsView">
-				<li>Moving up with: <label id="upVal"></label></li>
-				<li>Moving down with: <label id="downVal"></label></li>
-				<li>Moving left with: <label id="leftVal"></label></li>
-				<li>Moving right with: <label id="rightVal"></label></li>
-				<li>5 points color: <div id="view5"></div></li>
-				<li>15 points color: <div id="view15"></div></li>
-				<li>25 points color: <div id="view25"></div></li>
-				<li>time: <label id="timeVal"></label></li>
-				<li>Monsters number: <label id="monsnumVal"></label></li>
-				<li>Food dots number: <label id="foodnumVal"></label></li>
+			<div id="curUser" class="settingsView">
+				<label for="lblCurUser">USER NAME:</label>
+				<input id="lblCurUser" type="text" />
+			</div>
+			<div id="livesLeft" class="settingsView">
+				<label for="lblLives">LIVES LEFT:</label>
+				<input id="lblLives" type="text" />
+			</div>
+			<div id="settingsView">
+				<li class="settingsView">Moving up with: <label id="upVal">⇧</label></li>
+				<li class="settingsView">Moving down with: <label id="downVal">⇩</label></li>
+				<li class="settingsView">Moving left with: <label id="leftVal">⇦</label></li>
+				<li class="settingsView">Moving right with: <label id="rightVal">➪</label></li>
+				<li class="settingsView">5 points color: <div id="view5"></div></li>
+				<li class="settingsView">15 points color: <div id="view15"></div></li>
+				<li class="settingsView">25 points color: <div id="view25"></div></li>
+				<li class="settingsView">time: <label id="timeVal">60</label></li>
+				<li class="settingsView">Monsters number: <label id="monsnumVal">2</label></li>
+				<li class="settingsView">Food dots number: <label id="foodnumVal">50</label></li>
 
-			</div> -->
-			<canvas id="canvas" height="1000" width="1000"></canvas>
+			</div>
+			<canvas id="canvas" height="680" width="680"></canvas>
 		</div>
 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
+		
 		<script type="text/javascript" src="./screens.js"></script>
 		<script type="text/javascript" src="./register.js"></script>
 		<script type="text/javascript" src="./login.js"></script>
 		<script type="text/javascript" src="./about.js"></script>
 		<script type="text/javascript" src="./settings.js"></script>
+		<script type="text/javascript" src="./app.js"></script>
 
 
 
