@@ -6,6 +6,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Arima+Madurai:wght@500&family=Handlee&display=swap" rel="stylesheet">
 		<link type="text/css" rel="Stylesheet" href="jquery.validity.css" />
+		<link rel="shortcut icon" href="#" />
 
 
 	</head>
@@ -38,33 +39,33 @@
 			
 
 			<form id="settingsform" onsubmit="return false;">
-				<p>You can only choose the arrows or letters/numbers</p>
+				<p>Please choose only arrows/letters/numbers</p>
 				<label for="KeyUp"><b>Key for moving up</b></label>
-				<input id="keyUp" type="button" value="⇧" onclick="chooseKey('keyUp')" />
+				<input class="settingsInput" id="keyUp" type="button" value="⇧" onclick="chooseKey('keyUp')" />
 				<br/>
 
 				<label for="KeyDown"><b>Key for moving down</b></label>
-				<input id="keyDown" type="button" value="⇩" onclick="chooseKey('keyDown')" />
+				<input class="settingsInput" id="keyDown" type="button" value="⇩" onclick="chooseKey('keyDown')" />
 				<br/>
 
 				<label for="KeyLeft"><b>Key for moving left</b></label>
-				<input id="keyLeft" type="button" value="⇦" onclick="chooseKey('keyLeft')" />
+				<input class="settingsInput" id="keyLeft" type="button" value="⇦" onclick="chooseKey('keyLeft')" />
 				<br/>
 
 				<label for="KeyRight"><b>Key for moving right</b></label>
-				<input id="keyRight" type="button" value="➪" onclick="chooseKey('keyRight')" />
+				<input class="settingsInput" id="keyRight" type="button" value="➪" onclick="chooseKey('keyRight')" />
 				<br/>
 
 				<label for="5pointscolor"><b>Choose color for 5 points food</b></label>
-				<input id="5pointscolor" type="color" value="#00ffb3" onchange="changedColor('5pointscolor','point5','view5')"/>
+				<input class="settingsInput" id="5pointscolor" type="color" value="#00ffb3" onchange="changedColor('5pointscolor','point5','view5')"/>
 				<br/>
 				
 				<label for="15pointscolor"><b>Choose color for 15 points food</b></label>
-				<input id="15pointscolor" type="color" value="#67e5fe" onchange="changedColor('15pointscolor','point15','view15')"/>
+				<input class="settingsInput" id="15pointscolor" type="color" value="#67e5fe" onchange="changedColor('15pointscolor','point15','view15')"/>
 				<br/>
 
 				<label for="25pointscolor"><b>Choose color for 25 points food</b></label>
-				<input id="25pointscolor" type="color" value="#d8a8ff" onchange="changedColor('25pointscolor','point25','view25')" />
+				<input class="settingsInput" id="25pointscolor" type="color" value="#d8a8ff" onchange="changedColor('25pointscolor','point25','view25')" />
 				<br/>
 
 				<p><b>How many food dots would you like to play with?</b></p>
@@ -202,9 +203,9 @@
 				<li>Moving down with: <label id="downVal">⇩</label></li>
 				<li>Moving left with: <label id="leftVal">⇦</label></li>
 				<li>Moving right with: <label id="rightVal">➪</label></li>
-				<li>5 points color: <div id="view5"></div></li>
-				<li>15 points color: <div id="view15"></div></li>
-				<li>25 points color: <div id="view25"></div></li>
+				<li>5 points color: <input type="color" id="view5" disabled name="favcolor"></li>
+				<li>15 points color: <input type="color" id="view15" disabled name="favcolor"></li>
+				<li>25 points color: <input type="color" id="view25" disabled name="favcolor"></li>
 				<li>time: <label id="timeVal">60</label></li>
 				<li>Monsters number: <label id="monsnumVal">2</label></li>
 				<li>Food dots number: <label id="foodnumVal">50</label></li>
@@ -225,14 +226,18 @@
 		</div>
 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 		<script type="text/javascript" src="./screens.js"></script>
 		<script type="text/javascript" src="./register.js"></script>
 		<script type="text/javascript" src="./login.js"></script>
 		<script type="text/javascript" src="./about.js"></script>
 		<script type="text/javascript" src="./settings.js"></script>
+		<script type="text/javascript" src="./ghosts.js"></script>
 		<script type="text/javascript" src="./sound.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 

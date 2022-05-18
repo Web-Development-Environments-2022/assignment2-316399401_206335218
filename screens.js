@@ -5,6 +5,12 @@ function switchScreens(id){
     $("#"+id).show();
     // $("#info").show();
     music_play.pause();
+    if (interval != undefined && id != "game"){
+        window.clearInterval(interval);
+    }
+    if (ghostInterval != undefined && id != "game"){
+        window.clearInterval(ghostInterval);
+    }
     
 };
 
