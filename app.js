@@ -16,7 +16,7 @@ var p25num;
 var sumCount;
 var monsCount;
 var pacmanDirection="RIGHT";
-var lives ;
+var lives;
 var foodCollected;
 // var gameSound = new Audio("pacman_game_music.mp3");
 
@@ -159,7 +159,7 @@ function Start() {
 
 			) {
 				board[i][j] = 4;
-			}else if(j==1 && i==1 && monsCount<monstersNum){
+			 }else if(j==1 && i==1 && monsCount<monstersNum){
 				board[i][j]=6 //green
 				monsCount++;
 			} 	else if (j==15 && i==15 && monsCount<monstersNum){
@@ -405,9 +405,17 @@ function UpdatePosition() {
 			window.alert("Looser!!")
 		}
 		score-=10;
+		let newPac = findRandomEmptyCell(board);
+		pacmanPos.i = newPac[0];
+		pacmanPos.j = newPac[1];
+		board[pacmanPos.i][pacmanPos.j] = 2;
+		ghostLocations();
 
 	}
-	board[pacmanPos.i][pacmanPos.j] = 2;
+	else{
+		board[pacmanPos.i][pacmanPos.j] = 2;
+	}
+	
 	var currentTime = new Date();
 	time_elapsed = time - (currentTime - start_time) / 1000;
 	time_elapsed = Math.floor(time_elapsed);
@@ -421,3 +429,24 @@ function UpdatePosition() {
 	}
 }
 
+
+function ghostLocations(){
+		if(monstersNum==1){
+			board[1][1]=6;
+		}
+		if(monstersNum==2){
+			board[1][1]=6;
+			board[15][15]=7;
+		}
+		if(monstersNum==3){
+			board[1][1]=6;
+			board[15][15]=7;
+			board[1][15]=8;
+		}
+		if(monstersNum==4){
+			board[1][1]=6;
+			board[15][15]=7;
+			board[1][15]=8;
+			board[15][1]=9;
+		}
+}
