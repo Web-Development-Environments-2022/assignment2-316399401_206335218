@@ -19,6 +19,7 @@ var pacmanDirection="RIGHT";
 var lives;
 var foodCollected;
 var music_play = document.getElementById("gameSound");
+var addTime;
 
 
 $(document).ready(function() {
@@ -54,6 +55,7 @@ function roundNum(num,num2,num3){
 function Start() {
 	board = new Array();
 	score = 0;
+	addTime = 0;
 	pac_color = "yellow";
 	var cnt = 16*16;
 	var food_remain = foodNum;
@@ -408,18 +410,20 @@ function UpdatePosition() {
 		foodCollected++;
 
 	}
-	// if (board[pacmanPos.i][pacmanPos.j] == 10){
-	// 	time_elapsed += 30;
-	// }
+	if (board[pacmanPos.i][pacmanPos.j] == 10){
+		addTime += 30;
+	}
 	if (board[pacmanPos.i][pacmanPos.j] == 6 || board[pacmanPos.i][pacmanPos.j] == 7 || board[pacmanPos.i][pacmanPos.j] == 8 || board[pacmanPos.i][pacmanPos.j] == 9){
 		if (board[pacmanPos.i][pacmanPos.j] == 6){
 			lives--;
 			score -= 30;
 		}
 		lives--;
-		if(lives==0){
-			window.alert("Looser!!")
-			music_play.pause();
+		if(lives<=0){
+			lives = 0;
+			window.alert("Looser!!");
+			stopGame();
+			// music_play.pause();
 		}
 		score-=10;
 		let newPac = findRandomEmptyCell(board);
@@ -437,20 +441,20 @@ function UpdatePosition() {
 	}
 	
 	var currentTime = new Date();
-	time_elapsed = time - (currentTime - start_time) / 1000;
+	time_elapsed = (time - (currentTime - start_time) / 1000) + addTime;
 	time_elapsed = Math.floor(time_elapsed);
 
 
 	if (time_elapsed == 0 || foodCollected == foodNum) { 
-		window.clearInterval(interval);
+		// window.clearInterval(interval);
 		window.alert("Game completed");
-		music_play.pause();
-		// add return becuase time continue
-		time_elapsed = 0;
+		stopGame();
+		// music_play.pause();
 	} else {
 		Draw();
 	}
 }
+
 
 
 function ghostLocations(){
@@ -482,4 +486,13 @@ function togglePlay() {
 	}
 };
 
+function stopGame(){
+	window.clearInterval(interval);
+	interval = undefined;
+	// check if
+	document.getElementById("timeVal").innerHTML = time;
+	music_play.pause();
+	time_elapsed = 0;
+
+}
 

@@ -3,13 +3,12 @@ $(document).ready(function(){
     localStorage.setItem('k', 'k');
 
     $.validator.addMethod('validateUsername', function (user, element) {
-        val = localStorage.getItem(user)
-        pass = localStorage[val]
-        if (pass == null){ // there's no username with this name
-            return true;
-        }
-        return false;
-    });
+		u = localStorage.getItem(user);
+		pass = localStorage[user];
+		if(pass==null)
+			return true;
+		else return false;
+	});
 });
 
 $(function() {

@@ -10,7 +10,7 @@
 
 	</head>
 
-	<!-- <body background="background2.png"> -->
+	<!-- <body background="background1.png"> -->
 	<!-- <body style="background-color: #fee7fe;"> -->
 	<body>
 
@@ -33,7 +33,8 @@
 			<button id="reg" onclick="switchScreens('register')">Register</button></li>
 
 		</div></center>
-
+		<br>
+		<br>
 		<center><div id="settings" class="screen">
 			
 
@@ -80,8 +81,8 @@
 				<label id="chosenmonsnum">2 </label>
 				<p><b>How much time would you like to play? (in seconds)</b></p>
 				<label>60</label>
-				<input type="range" id="time" name="time" min="60" max="900" value="60" step="1" onchange="changedValue('time','chosentime','time','timeVal')">
-				<label>900</label>
+				<input type="range" id="time" name="time" min="60" max="180" value="60" step="1" onchange="changedValue('time','chosentime','time','timeVal')">
+				<label>180</label>
 				<br/>
 				<label id="chosentime">60 </label>
 				<br/>
@@ -174,30 +175,7 @@
 		<br>
 		<br>
 		<div id="game" class="screen">
-			<center>
-				<div id="score" class="settingsView">
-					<label for="lblScore">SCORE:</label>
-					<input class="gameInput" id="lblScore" type="text" readonly="readonly"/>
-				</div>
-				<div id="time" class="settingsView">
-					<label for="lblTime">TIME:</label>
-					<input class="gameInput" id="lblTime" type="text" readonly="readonly"/>
-				</div>
-				<div id="curUser" class="settingsView">
-					<label for="lblCurUser">USER NAME:</label>
-					<input class="gameInput" id="lblCurUser" type="text" readonly="readonly"/>
-				</div>
-				<div id="livesLeft" class="settingsView">
-					<label for="lblLives">LIVES LEFT:</label>
-					<input class="gameInput" id="lblLives" type="text" readonly="readonly"/>
-				</div>
-			</center>
-			<br>
-			<br>
-			<br>
-			<br>
-
-			<div id="settingsView" class="aaa">
+			<div id="settingsView" class="aaa" align="right">
 				<li>Moving up with: <label id="upVal">⇧</label></li>
 				<li>Moving down with: <label id="downVal">⇩</label></li>
 				<li>Moving left with: <label id="leftVal">⇦</label></li>
@@ -208,20 +186,32 @@
 				<li>time: <label id="timeVal">60</label></li>
 				<li>Monsters number: <label id="monsnumVal">2</label></li>
 				<li>Food dots number: <label id="foodnumVal">50</label></li>
-
 			</div>
-			<center><canvas id="canvas" height="680" width="680"></canvas></center> 
+
+			<div id="score" class="settingsView">
+				<label for="lblScore">SCORE:</label>
+				<input class="gameInput" id="lblScore" type="text" readonly="readonly"/>
+			</div>
+			<div id="time" class="settingsView">
+				<label for="lblTime">TIME:</label>
+				<input class="gameInput" id="lblTime" type="text" readonly="readonly"/>
+			</div>
+			<div id="curUser" class="settingsView">
+				<label for="lblCurUser">USER NAME:</label>
+				<input class="gameInput" id="lblCurUser" type="text" readonly="readonly"/>
+			</div>
+			<div id="livesLeft" class="settingsView">
+				<label for="lblLives">LIVES LEFT:</label>
+				<input class="gameInput" id="lblLives" type="text" readonly="readonly"/>
+			</div>
+			<center><canvas id="canvas" height="680" width="680" align="center"></canvas></center> 
 			<audio id = "gameSound" preload="auto">
 				<source src = "packman_game_music.mp3" type="audio/mpeg"/>
 			</audio>
-			<br>
-			<br>
-			<br>
-			<br>
-			<center><div class="gameButtoms">
+			<div class="gameButtoms" align="right">
 				<button id="play" onclick="togglePlay()" > &#9658;&#10074;&#10074; Music</button>
 				<button id="newGame" onclick="switchScreens('settings')" type="button">New Game</button>
-			</div></center>
+			</div>
 		</div>
 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
