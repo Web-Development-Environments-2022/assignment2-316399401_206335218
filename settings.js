@@ -105,7 +105,7 @@ function changedValue(range, label, theVar,settingView){
 function changedColor(colorIn, theVar,settingView){
     var val = document.getElementById(colorIn).value
     window[theVar] = val;
-    document.getElementById(settingView).style.backgroundColor = val;
+    document.getElementById(settingView).value = val;
 
 }
 
@@ -130,12 +130,16 @@ function randomVal(){
     document.getElementById("foodnumVal").innerHTML = foodNum;
     point5 = RandomColor();
     document.getElementById("5pointscolor").value = point5;
+    document.getElementById("view5").value = point5;
+
     point15 = RandomColor();
     document.getElementById("15pointscolor").value = point15;
-    $("#view15").css("background-color",point15);
-    $("#view15").show();
+    document.getElementById("view15").value = point15;
+
     point25 = RandomColor();
     document.getElementById("25pointscolor").value = point25;
+    document.getElementById("view25").value = point25;
+
     time = RandomInt(60,180);
     document.getElementById("time").value = time;
     document.getElementById("chosentime").innerHTML = time;
@@ -173,8 +177,14 @@ function resetSetting(){
     document.getElementById("foodnum").value = foodNum;
     document.getElementById("chosenfoodnum").innerHTML = foodNum;
     document.getElementById("5pointscolor").value = point5;
+    document.getElementById("view5").value = point5;
+
     document.getElementById("15pointscolor").value = point15;
+    document.getElementById("view15").value = point15;
+
     document.getElementById("25pointscolor").value = point25;
+    document.getElementById("view25").value = point25;
+
     document.getElementById("time").value = time;
     document.getElementById("chosentime").innerHTML = time;
 }

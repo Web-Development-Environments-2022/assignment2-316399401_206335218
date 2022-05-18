@@ -8,6 +8,9 @@ function switchScreens(id){
     if (interval != undefined && id != "game"){
         window.clearInterval(interval);
     }
+    if (ghostInterval != undefined && id != "game"){
+        window.clearInterval(ghostInterval);
+    }
     
 };
 
