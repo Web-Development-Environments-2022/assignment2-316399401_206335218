@@ -39,6 +39,7 @@ $(function() {
         submitHandler: function(){
             login();
             switchScreens('settings');
+            resetSetting();
             document.getElementById("loginform").reset();
         }
     });

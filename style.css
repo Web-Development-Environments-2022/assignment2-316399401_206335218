@@ -2,6 +2,13 @@
     font: 400 1.5em/300% 'Handlee', Helvetica, Sans-serif;	
     top: 0;
    	z-index: 100;
+	background: rgba(255, 174, 218, 0.39);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10.6px);
+	-webkit-backdrop-filter: blur(10.6px);
+	border: 1px solid rgba(255, 174, 218, 0.17);
+	
 }
 
 button{
@@ -14,18 +21,80 @@ button{
     outline: none;
 }
 
-li{
+button:hover,
+button:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+  color: rgb(199, 133, 238);
+}
+
+.menu{
     display: inline;
     margin: 20px;
 	font: 400 1em/300% 'Handlee', Helvetica, Sans-serif;
+	color: #000000;
+	background: none;
+	text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #e8c2ff 0px 0px 20px, #e8c2ff 0px 0px 30px, #e8c2ff 0px 0px 40px, #e8c2ff 0px 0px 50px, #e8c2ff 0px 0px 75px;
+
+}
+
+.menubutton{
+
+	color: #000000;
+	background: none;
+	/* text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #e8c2ff 0px 0px 20px, #e8c2ff 0px 0px 30px, #e8c2ff 0px 0px 40px, #e8c2ff 0px 0px 50px, #e8c2ff 0px 0px 75px; */
 
 }
 
 .settingsView{
 	display: block;
 	font: 400 1.25em/100% 'Handlee', Helvetica, Sans-serif;
+	display: inline;
 
 }
+
+.aaa{
+	font: 400 1.25em/300% 'Handlee', Helvetica, Sans-serif;
+	display: block;
+	float: right;
+	text-align: left;
+	width:25%;
+	background-color: #f9d6ff;
+	-webkit-border-radius: 28px 28px 28px 28px;
+	-moz-border-radius: 28px 28px 28px 28px;
+	border-radius: 28px 28px 28px 28px;
+	border: 5px double rgba(243,180,255,0.73);
+	border-radius: 28px 28px 28px 28px;
+	list-style-type: none;
+	color: #000000;
+	text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #e8c2ff 0px 0px 20px, #e8c2ff 0px 0px 30px, #e8c2ff 0px 0px 40px, #e8c2ff 0px 0px 50px, #e8c2ff 0px 0px 75px;
+
+}
+
+#game{
+	margin-bottom: 20px;
+}
+
+.gameInput {
+	padding: 6px;
+	font-size: 15px;
+	border-width: 1px;
+	border-color: #CCCCCC;
+	background-color: #FFFFFF;
+	color: #000000;
+	border-style: solid;
+	border-radius: 19px;
+	box-shadow: 0px 0px 11px rgba(148,166,247,.75);
+	text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+	width: 70px;
+	margin: 30px;
+	text-align: center;
+
+}
+.gameInput:focus {
+	outline:none;
+}
+
 
 #lblScore, #lblTime, #lblCurUser, #lblLives{
 	font: 400 1.25em/100% 'Handlee', Helvetica, Sans-serif;
@@ -74,7 +143,7 @@ li{
     color:#F072A9;
 }
 
-#submit, #start, #log, #reg, #realstart, #randomsetting{
+#submit, #start, #log, #reg, #realstart, #randomsetting, #play, #newGame{
     border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -194,12 +263,15 @@ animation-iteration-count:infinite;}
 	
 	/* Modal Content */
 	.modal-content {
-	background-color: #f0c8ff;
+	background-color: rgba(223, 136, 255, 0.35);
 	margin: 15% auto;
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%;
 	font: 400 1em/100% 'Handlee', Helvetica, Sans-serif;
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+	border: 1px solid rgba(255,255,255,0.175);
 	}
 	
 	.close{
@@ -218,4 +290,10 @@ animation-iteration-count:infinite;}
 
 	.footer-contact{
 		font: 400 1em/200% 'Handlee', Helvetica, Sans-serif;
+		background: rgba(255, 174, 218, 0.39);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(10.6px);
+		-webkit-backdrop-filter: blur(10.6px);
+		border: 1px solid rgba(255, 174, 218, 0.17);
 	}

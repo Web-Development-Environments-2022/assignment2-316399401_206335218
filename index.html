@@ -10,15 +10,21 @@
 
 	</head>
 
-	<body style="background-color: #fee7fe;">
+	<!-- <body background="background2.png"> -->
+	<!-- <body style="background-color: #fee7fe;"> -->
+	<body>
+
+
+		<br>
+		<br>
 		<center><div id="menu">
-			<li><div id="logo" class="paceman">
+			<!-- <li><div id="logo" class="paceman">
 				<div id="logo2" class="paceman-eye"></div>
-				<div id="logo3" class="paceman-mouth"></div></li>
-			<li><button id="openHome" onclick="switchScreens('welcome')">Home</button></li>
-			<li><button id="openLogin" onclick="switchScreens('login')">Login</button></li>
-			<li><button id="openReg" onclick="switchScreens('register')">Register</button></li>
-			<li><button id="openAbout">About</button></li>
+				<div id="logo3" class="paceman-mouth"></div></li> -->
+			<li class="menu"><button class="menubutton" id="openHome" onclick="switchScreens('welcome')">Home</button></li>
+			<li class="menu"><button class="menubutton" id="openLogin" onclick="switchScreens('login')">Login</button></li>
+			<li class="menu"><button class="menubutton" id="openReg" onclick="switchScreens('register')">Register</button></li>
+			<li class="menu"><button class="menubutton" id="openAbout">About</button></li>
 		</div></center>
 
 		<center><div id="welcome" style="display:none" class="screen">
@@ -32,7 +38,7 @@
 			
 
 			<form id="settingsform" onsubmit="return false;">
-				<p>Please choose only arrows / letters / numbers</p>
+				<p>You can only choose the arrows or letters/numbers</p>
 				<label for="KeyUp"><b>Key for moving up</b></label>
 				<input id="keyUp" type="button" value="⇧" onclick="chooseKey('keyUp')" />
 				<br/>
@@ -82,13 +88,10 @@
 				<button id="realstart">Let Me Play!!!</button>
 				<button id="randomsetting" onclick="randomVal()">Random</button>
 			</form>
-			<!-- <center>
-				<img id="soundOff-img" src="soundOff.png" width="100" height="100" onclick="change()">
-				<img id="soundOn-img" src="soundOn.png" width="100" height="100" onclick="change()">
-			</center> -->
 
 		</div></center>
 
+		<br>
 		<center><div id="login" class="screen">
 			<form id="loginform">
 				<label for="username"><b>User Name</b></label>
@@ -166,38 +169,59 @@
 
 
 
-		
+		<br>
+		<br>
+		<br>
+		<br>
 		<div id="game" class="screen">
-			<div id="score" class="settingsView">
-				<label for="lblScore">SCORE:</label>
-				<input id="lblScore" type="text" />
-			</div>
-			<div id="time" class="settingsView">
-				<label for="lblTime">TIME:</label>
-				<input id="lblTime" type="text" />
-			</div>
-			<div id="curUser" class="settingsView">
-				<label for="lblCurUser">USER NAME:</label>
-				<input id="lblCurUser" type="text" />
-			</div>
-			<div id="livesLeft" class="settingsView">
-				<label for="lblLives">LIVES LEFT:</label>
-				<input id="lblLives" type="text" />
-			</div>
-			<div id="settingsView">
-				<li class="settingsView">Moving up with: <label id="upVal">⇧</label></li>
-				<li class="settingsView">Moving down with: <label id="downVal">⇩</label></li>
-				<li class="settingsView">Moving left with: <label id="leftVal">⇦</label></li>
-				<li class="settingsView">Moving right with: <label id="rightVal">➪</label></li>
-				<li class="settingsView">5 points color: <div id="view5"></div></li>
-				<li class="settingsView">15 points color: <div id="view15"></div></li>
-				<li class="settingsView">25 points color: <div id="view25"></div></li>
-				<li class="settingsView">time: <label id="timeVal">60</label></li>
-				<li class="settingsView">Monsters number: <label id="monsnumVal">2</label></li>
-				<li class="settingsView">Food dots number: <label id="foodnumVal">50</label></li>
+			<center>
+				<div id="score" class="settingsView">
+					<label for="lblScore">SCORE:</label>
+					<input class="gameInput" id="lblScore" type="text" readonly="readonly"/>
+				</div>
+				<div id="time" class="settingsView">
+					<label for="lblTime">TIME:</label>
+					<input class="gameInput" id="lblTime" type="text" readonly="readonly"/>
+				</div>
+				<div id="curUser" class="settingsView">
+					<label for="lblCurUser">USER NAME:</label>
+					<input class="gameInput" id="lblCurUser" type="text" readonly="readonly"/>
+				</div>
+				<div id="livesLeft" class="settingsView">
+					<label for="lblLives">LIVES LEFT:</label>
+					<input class="gameInput" id="lblLives" type="text" readonly="readonly"/>
+				</div>
+			</center>
+			<br>
+			<br>
+			<br>
+			<br>
+
+			<div id="settingsView" class="aaa">
+				<li>Moving up with: <label id="upVal">⇧</label></li>
+				<li>Moving down with: <label id="downVal">⇩</label></li>
+				<li>Moving left with: <label id="leftVal">⇦</label></li>
+				<li>Moving right with: <label id="rightVal">➪</label></li>
+				<li>5 points color: <div id="view5"></div></li>
+				<li>15 points color: <div id="view15"></div></li>
+				<li>25 points color: <div id="view25"></div></li>
+				<li>time: <label id="timeVal">60</label></li>
+				<li>Monsters number: <label id="monsnumVal">2</label></li>
+				<li>Food dots number: <label id="foodnumVal">50</label></li>
 
 			</div>
-			<canvas id="canvas" height="680" width="680"></canvas>
+			<center><canvas id="canvas" height="680" width="680"></canvas></center> 
+			<audio id = "gameSound" preload="auto">
+				<source src = "packman_game_music.mp3" type="audio/mpeg"/>
+			</audio>
+			<br>
+			<br>
+			<br>
+			<br>
+			<center><div class="gameButtoms">
+				<button id="play" onclick="togglePlay()" > &#9658;&#10074;&#10074; Music</button>
+				<button id="newGame" onclick="switchScreens('settings')" type="button">New Game</button>
+			</div></center>
 		</div>
 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
@@ -230,6 +254,7 @@
 
 	</body>
 
+	<br>
 	<footer id="info">
 		<center>
 			<div class="footer-contact">	

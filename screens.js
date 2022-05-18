@@ -4,6 +4,7 @@ function switchScreens(id){
     // $("#menu").show();
     $("#"+id).show();
     // $("#info").show();
+    music_play.pause();
     
 };
 
