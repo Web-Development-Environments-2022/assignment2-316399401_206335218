@@ -123,18 +123,24 @@ function randomVal(){
     monstersNum = RandomInt(1,4);
     document.getElementById("monsnum").value = monstersNum;
     document.getElementById("chosenmonsnum").innerHTML = monstersNum;
+    document.getElementById("monsnumVal").innerHTML = monstersNum;
     foodNum = RandomInt(50,90);
     document.getElementById("foodnum").value = foodNum;
     document.getElementById("chosenfoodnum").innerHTML = foodNum;
+    document.getElementById("foodnumVal").innerHTML = foodNum;
     point5 = RandomColor();
     document.getElementById("5pointscolor").value = point5;
     point15 = RandomColor();
     document.getElementById("15pointscolor").value = point15;
+    $("#view15").css("background-color",point15);
+    $("#view15").show();
     point25 = RandomColor();
     document.getElementById("25pointscolor").value = point25;
-    time = RandomInt(60,900);
+    time = RandomInt(60,180);
     document.getElementById("time").value = time;
     document.getElementById("chosentime").innerHTML = time;
+    document.getElementById("timeVal").innerHTML = time;
+
 }
 
 

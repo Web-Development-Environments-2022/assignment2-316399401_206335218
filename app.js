@@ -438,7 +438,7 @@ function UpdatePosition() {
 		window.alert("Game completed");
 		music_play.pause();
 		// add return becuase time continue
-		return;
+		time_elapsed = 0;
 	} else {
 		Draw();
 	}
