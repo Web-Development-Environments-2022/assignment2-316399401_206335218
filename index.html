@@ -7,38 +7,30 @@
 		<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Arima+Madurai:wght@500&family=Handlee&display=swap" rel="stylesheet">
 		<link type="text/css" rel="Stylesheet" href="jquery.validity.css" />
 		<link rel="shortcut icon" href="#" />
-
-
 	</head>
 
 	<body background="background4.png">
-	<!-- <body style="background-color: #fee7fe;"> -->
-	<!-- <body> -->
-
-
 		<br>
 		<br>
-		<center><div id="menu">
-			<!-- <li><div id="logo" class="paceman">
-				<div id="logo2" class="paceman-eye"></div>
-				<div id="logo3" class="paceman-mouth"></div></li> -->
-			<li class="menu"><button class="menubutton" id="openHome" onclick="switchScreens('welcome')">Home</button></li>
-			<li class="menu"><button class="menubutton" id="openLogin" onclick="switchScreens('login')">Login</button></li>
-			<li class="menu"><button class="menubutton" id="openReg" onclick="switchScreens('register')">Register</button></li>
-			<li class="menu"><button class="menubutton" id="openAbout">About</button></li>
-		</div></center>
+		<center>
+			<div id="menu">
+				<li class="menu"><button class="menubutton" id="openHome" onclick="switchScreens('welcome')">Home</button></li>
+				<li class="menu"><button class="menubutton" id="openLogin" onclick="switchScreens('login')">Login</button></li>
+				<li class="menu"><button class="menubutton" id="openReg" onclick="switchScreens('register')">Register</button></li>
+				<li class="menu"><button class="menubutton" id="openAbout">About</button></li>
+			</div>
+		</center>
 
-		<center><div id="welcome" style="display:none" class="screen">
-			<img src="pacman logo.png" width="700" height="400"><br>
-			<button id="log" onclick="switchScreens('login')">Login</button></li>
-			<button id="reg" onclick="switchScreens('register')">Register</button></li>
-
-		</div></center>
+		<center>
+			<div id="welcome" style="display:none" class="screen">
+				<img src="pacman logo.png" width="700" height="400"><br>
+				<button id="log" onclick="switchScreens('login')">Login</button></li>
+				<button id="reg" onclick="switchScreens('register')">Register</button></li>
+			</div>
+		</center>
 		<br>
 		<br>
 		<center><div id="settings" class="screen">
-			
-
 			<form id="settingsform" onsubmit="return false;">
 				<p>Please choose only arrows/letters/numbers</p>
 				<label for="KeyUp"><b>Key for moving up</b></label>
@@ -140,8 +132,6 @@
 		</div></center>
 
 
-		<!-- <div id="about" style="display:none"></div> -->
-		<!-- The Modal -->
 		<center><div id="myModal" class="modal">
 
 			<!-- Modal content -->
@@ -152,13 +142,13 @@
 				<p>This game was made by Stav Keidar and Noa Birenboim.</p>
 				<hr style="border: 0.5px solid gray;">
 				<b>jQuery Plugin Usage:</b>
-				<p>We use jQuery Validator to check forms.</p>
+				<p>We used jQuery Validator to check forms.</p>
 				<hr style="border: 0.5px solid gray;">
 				<b>Templates:</b>
-				<p> We Took template from w3schools.</p>
+				<p> We used modal window template for "About" window.</p>
 				<hr style="border: 0.5px solid gray;">
 				<b>Difficalties:</b>
-				<p> 1. Synchronizing the pacman with the points, monsters, lives etc...</p>
+				<p> 1. Synchronizing the pacman with the food, monsters, lives, clock etc...</p>
 				<p> 2. Controlling the display of every div.</p>
 				<hr style="border: 0.5px solid gray;">
 				<b>Hope you enjoy :)</b>
@@ -166,12 +156,8 @@
 			</div>
 		
 		</div></center>
-	
-		<!-- <div id="game" style="display:none"></div> -->
 		<br>
 		<br>
-		<!-- <br>
-		<br> -->
 		<div id="game" class="screen">
 			<div id="settingsView" class="aaa" align="right">
 				<li>Moving up with: <label id="upVal">⇧</label></li>
@@ -184,14 +170,11 @@
 				<li>Time: <label id="timeVal">60</label></li>
 				<li>Number of ghosts: <label id="monsnumVal">2</label></li>
 				<li>Number of food dots: <label id="foodnumVal">50</label></li>
-				<li><img class="check" src="clock.png" width="30" height="30">: + 30 seconds</li>
-				<li><img class="check" src="candy.png" width="30" height="30">: + / - 20 points</li>
-				<li><img class="check" src="green-ghost.png" width="30" height="30">: - 25 points and 2 lives</li>
+				<li><img src="clock.png" width="30" height="30">: + 30 seconds</li>
+				<li><img src="candy.png" width="30" height="30">: + / - 20 points</li>
+				<li><img src="cute-hamster.png" width="30" height="30">: + 50 points</li>
+				<li><img src="green-ghost.png" width="30" height="30">: - 25 points and 2 lives</li>
 				<li>Rest of ghosts: -10 points and 1 life</li> 
-				<div class="gameButtoms" align="right">
-					<button id="play" onclick="togglePlay()" > &#9658;&#10074;&#10074; Music</button>
-					<button id="newGame" onclick="switchScreens('settings')" type="button">New Game</button>
-				</div>
 			</div>
 
 			<div id="score" class="settingsView">
@@ -214,15 +197,14 @@
 			<audio id = "gameSound" preload="auto">
 				<source src = "packman_game_music.mp3" type="audio/mpeg"/>
 			</audio>
-			<br>
-			<br>
+			<div class="gameButtoms" align="right">
+				<button id="play" onclick="togglePlay()" > &#9658;&#10074;&#10074; Music</button>
+				<button id="newGame" onclick="switchScreens('settings')" type="button">New Game</button>
+			</div>
 			
 		</div>
 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
@@ -232,6 +214,7 @@
 		<script type="text/javascript" src="./about.js"></script>
 		<script type="text/javascript" src="./settings.js"></script>
 		<script type="text/javascript" src="./ghosts.js"></script>
+		<script type="text/javascript" src="./doll.js"></script>
 		<script type="text/javascript" src="./sound.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 
@@ -241,10 +224,6 @@
 		<script type="text/javascript">
 
 			$('.screen').hide();
-			// $("#logo").show();
-			// $("#logo2").show();
-			// $("#logo3").show();
-			// $("#menu").show();
 			$('#welcome').show();
 			$('#info').show();
 
@@ -253,8 +232,6 @@
 
 	</body>
 
-	<!-- <br>
-	<br> -->
 	<footer id="info">
 		<center>
 			<div class="footer-contact">	

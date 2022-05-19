@@ -1,5 +1,4 @@
 var current_username;
-// var users = {"k": "k"};
 
 // check if password belong to user
 $(document).ready(function(){

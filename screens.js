@@ -1,15 +1,16 @@
 function switchScreens(id){
 
     $('.screen').hide();
-    // $("#menu").show();
     $("#"+id).show();
-    // $("#info").show();
     music_play.pause();
     if (interval != undefined && id != "game"){
         window.clearInterval(interval);
     }
     if (ghostInterval != undefined && id != "game"){
         window.clearInterval(ghostInterval);
+    }
+    if (dollInterval != undefined && id != "game"){
+        window.clearInterval(dollInterval);
     }
     
 };

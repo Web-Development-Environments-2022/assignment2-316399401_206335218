@@ -111,7 +111,6 @@ function changedColor(colorIn, theVar,settingView){
 
 document.getElementById("realstart").onclick = function(){
     switchScreens("game");
-    // document.getElementById("settingsform").reset();
     Start();
 }
 

@@ -26,12 +26,13 @@ var activeGhosts;
 var ghostInterval;
 var wallImg;
 var pacmanImg;
+var dollInterval;
+var movingDoll;
 
 
 $(document).ready(function() {
 	context = canvas.getContext("2d");
 	music_play = document.getElementById("gameSound");
-	// Start();
 });
 
 function foodDev(){
@@ -66,6 +67,9 @@ function Start() {
 	if (ghostInterval != undefined){
 		window.clearInterval(ghostInterval);
 	}
+	if (dollInterval != undefined){
+		window.clearInterval(dollInterval);
+	}
 	board = new Array();
 	activeGhosts = new Array();
 	score = 0;
@@ -77,6 +81,7 @@ function Start() {
 	lives=5;
 	monsCount=0;
 	foodDev();
+	movingDoll = new doll();
 	var pacman_remain = 1;
 	start_time = new Date();
 	music_play.loop = true;
@@ -199,6 +204,7 @@ function Start() {
 					monsCount++;
 				}
 				else if (j == 8 && i == 8){
+					
 					board[i][j]=11
 				}
 				
@@ -250,7 +256,6 @@ function Start() {
 		pacmanPos.j = emptyCellPacman[1];
 		board[emptyCellPacman[0]][emptyCellPacman[1]] = 2;
 	}
-	// maybe add pacman
 	// add clock to board
 	var c = findRandomEmptyCell(board);
 	board[c[0]][c[1]] = 10; //clock
@@ -276,8 +281,13 @@ function Start() {
 	if (pacmanPos == undefined){
 		pacmanPos = new Object();
 	}
+	if (movingDoll == undefined){
+		movingDoll = new doll();
+	}
 	interval = setInterval(UpdatePosition, 125);
 	ghostInterval = setInterval(updateGhostsLocations,375);
+	dollInterval = setInterval(function(){dollMove(movingDoll)}, 375);
+
 }
 
 
@@ -360,36 +370,21 @@ function Draw() {
 			context.fill();
 			} 
 			else if (board[i][j] == 4) {
-					// context.beginPath();
-					// context.rect(center.x - 20, center.y - 20, 40, 40);
-					// context.fillStyle = "grey"; //color
-					// context.fill();
-					wallImg = new Image();
-					wallImg.src = "wall.png";
-					context.drawImage(wallImg,center.x-20,center.y-20,40,40);
+				wallImg = new Image();
+				wallImg.src = "wall.png";
+				context.drawImage(wallImg,center.x-20,center.y-20,40,40);
 
 			}
 			else if (board[i][j] == 9){ //red
-				// var redImg = new Image();
-				// redImg.src = "red-ghost.png";
 				context.drawImage(redGhost.img,center.x-20,center.y-20,40,40);
 			}
 			else if (board[i][j] == 6){ //green
-				// var greenImg = new Image();
-				// greenImg.src = "green-ghost.png"
     			context.drawImage(greenGhost.img, center.x - 20, center.y - 20, 40, 40);
-
-				
 			}
 			else if (board[i][j] == 7){ //blue
-				// var blueImg = new Image();
-				// blueImg.src = "blue-ghost.png"
     			context.drawImage(blueGhost.img, center.x - 20, center.y - 20, 40, 40);
-
 			}
 			else if (board[i][j] == 8){ //orange
-				// var orangeImg = new Image();
-				// orangeImg.src = "orange-ghost.png"
     			context.drawImage(orangeGhost.img, center.x - 20, center.y - 20, 40, 40);
 			}
 			else if (board[i][j] == 10){ //clock
@@ -411,10 +406,6 @@ function Draw() {
 		}
 	}
 }
-
-
-
-
 
 function UpdatePosition() {
 	if (pacmanPos.i==undefined || pacmanPos.j==undefined){
@@ -453,37 +444,14 @@ function UpdatePosition() {
 	if (board[pacmanPos.i][pacmanPos.j] == 15) {
 		score+=15;
 		foodCollected++;
-
 	}
 	if (board[pacmanPos.i][pacmanPos.j] == 25) {
 		score+=25;
 		foodCollected++;
-
 	}
 	if (board[pacmanPos.i][pacmanPos.j] == 10){
 		addTime += 30;
 	}
-	// if (board[pacmanPos.i][pacmanPos.j] == 6 || board[pacmanPos.i][pacmanPos.j] == 7 || board[pacmanPos.i][pacmanPos.j] == 8 || board[pacmanPos.i][pacmanPos.j] == 9){
-	// 	if (board[pacmanPos.i][pacmanPos.j] == 6){
-	// 		lives--;
-	// 		score -= 30;
-	// 	}
-	// 	lives--;
-	// 	if(lives<=0){
-	// 		lives = 0;
-	// 		window.alert("Looser!!");
-	// 		stopGame();
-	// 		// music_play.pause();
-	// 	}
-	// 	score-=10;
-	// 	let newPac = findRandomEmptyCell(board);
-	// 	pacmanPos.i = newPac[0];
-	// 	pacmanPos.j = newPac[1];
-	// 	board[pacmanPos.i][pacmanPos.j] = 2;
-	// 	ghostLocations();
-	// 	if (score < 0){
-	// 		score = 0;
-	// 	}
 	if (board[pacmanPos.i][pacmanPos.j] == 12){
 		let rand = Math.random();
 		if (rand <=0.5){
@@ -494,55 +462,22 @@ function UpdatePosition() {
 		}
 	}
 	if (board[pacmanPos.i][pacmanPos.j] == 11){
+		board[pacmanPos.i][pacmanPos.j] =2;
+		window.clearInterval(dollInterval);
 		score += 50;
 	}
-	// if (board[pacmanPos.i][pacmanPos.j] == 10){
-	// 	time_elapsed += 30;
-	// }
-	if (board[pacmanPos.i][pacmanPos.j] == 6 || board[pacmanPos.i][pacmanPos.j] == 7 || board[pacmanPos.i][pacmanPos.j] == 8 || board[pacmanPos.i][pacmanPos.j] == 9){
-		// if (board[pacmanPos.i][pacmanPos.j] == 6){
-		// 	lives--;
-		// 	score -= 25;
-		// }
-		// else{
-		// 	score-=10;
-		// }
-		// lives--;
-		// if(lives==0){
-		// 	window.alert("Looser!!")
-		// 	music_play.pause();
-		// }		
-		// board[pacmanPos.i][pacmanPos.j] = 0;
-		// let newPac = findRandomEmptyCell(board);
-		// pacmanPos.i = newPac[0];
-		// pacmanPos.j = newPac[1];
-		// board[pacmanPos.i][pacmanPos.j] = 2;
-		// resetGhostLocations();
+	else if (board[pacmanPos.i][pacmanPos.j] == 6 || board[pacmanPos.i][pacmanPos.j] == 7 || board[pacmanPos.i][pacmanPos.j] == 8 || board[pacmanPos.i][pacmanPos.j] == 9){
 		resetAfterEat(board[pacmanPos.i][pacmanPos.j]);
-
 	}
 	else{
 		board[pacmanPos.i][pacmanPos.j] = 2;
 	}
-	
+
 	var currentTime = new Date();
 	time_elapsed = (time - (currentTime - start_time) / 1000) + addTime;
 	time_elapsed = Math.floor(time_elapsed);
 
-
-	// if (time_elapsed == 0 || foodCollected == foodNum) { 
-	// 	window.clearInterval(interval);
-	// 	window.clearInterval(ghostInterval);
-	// 	window.alert("Game completed");
-	// 	stopGame();
-	// 	// music_play.pause();
-	// } else {
-	// 	Draw();
-	// }
-
 	if (time_elapsed == 0) { 
-		// window.clearInterval(interval);
-		// window.clearInterval(ghostInterval);
 		if (score < 100){
 			window.alert("You are better than " + score + " points!");
 		}
@@ -555,8 +490,6 @@ function UpdatePosition() {
 	}
 
 	if (foodCollected == foodNum) { 
-		// window.clearInterval(interval);
-		// window.clearInterval(ghostInterval);
 		window.alert("Game completed");
 		stopGame();
 	} else {
@@ -582,8 +515,9 @@ function stopGame(){
 	if (ghostInterval != undefined){
 		window.clearInterval(ghostInterval);
 	}
-	// interval = undefined;
-	// check if
+	if (dollInterval != undefined){
+		window.clearInterval(dollInterval);
+	}
 	document.getElementById("timeVal").innerHTML = time;
 	music_play.pause();
 	time_elapsed = 0;
@@ -601,9 +535,7 @@ function resetAfterEat(boardNum){
 	lives--;
 	if(lives<=0){
 		window.alert("Looser!!");
-		//check
 		stopGame();
-		// music_play.pause();
 	}		
 	board[pacmanPos.i][pacmanPos.j] = 0;
 	let newPac = findRandomEmptyCell(board);
@@ -611,7 +543,4 @@ function resetAfterEat(boardNum){
 	pacmanPos.j = newPac[1];
 	board[pacmanPos.i][pacmanPos.j] = 2;
 	resetGhostLocations();
-	// window.clearInterval(interval);
-	// window.clearInterval(ghostInterval)
-	
 }
