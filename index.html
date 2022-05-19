@@ -11,9 +11,9 @@
 
 	</head>
 
-	<!-- <body background="background1.png"> -->
+	<body background="background4.png">
 	<!-- <body style="background-color: #fee7fe;"> -->
-	<body>
+	<!-- <body> -->
 
 
 		<br>
@@ -170,8 +170,8 @@
 		<!-- <div id="game" style="display:none"></div> -->
 		<br>
 		<br>
-		<br>
-		<br>
+		<!-- <br>
+		<br> -->
 		<div id="game" class="screen">
 			<div id="settingsView" class="aaa" align="right">
 				<li>Moving up with: <label id="upVal">⇧</label></li>
@@ -184,10 +184,14 @@
 				<li>Time: <label id="timeVal">60</label></li>
 				<li>Number of ghosts: <label id="monsnumVal">2</label></li>
 				<li>Number of food dots: <label id="foodnumVal">50</label></li>
-				<li><img class="check" src="clock.png" width="40" height="30">: + 30 seconds</li>
+				<li><img class="check" src="clock.png" width="30" height="30">: + 30 seconds</li>
 				<li><img class="check" src="candy.png" width="30" height="30">: + / - 20 points</li>
 				<li><img class="check" src="green-ghost.png" width="30" height="30">: - 25 points and 2 lives</li>
 				<li>Rest of ghosts: -10 points and 1 life</li> 
+				<div class="gameButtoms" align="right">
+					<button id="play" onclick="togglePlay()" > &#9658;&#10074;&#10074; Music</button>
+					<button id="newGame" onclick="switchScreens('settings')" type="button">New Game</button>
+				</div>
 			</div>
 
 			<div id="score" class="settingsView">
@@ -212,20 +216,7 @@
 			</audio>
 			<br>
 			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-
 			
-			<div class="gameButtoms" align="right">
-				<button id="play" onclick="togglePlay()" > &#9658;&#10074;&#10074; Music</button>
-				<button id="newGame" onclick="switchScreens('settings')" type="button">New Game</button>
-			</div>
 		</div>
 
 		<script src="./jquery-3.4.1.slim.min.js"></script>
@@ -262,8 +253,8 @@
 
 	</body>
 
-	<br>
-	<br>
+	<!-- <br>
+	<br> -->
 	<footer id="info">
 		<center>
 			<div class="footer-contact">	

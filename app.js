@@ -24,6 +24,8 @@ var blueGhost;
 var orangeGhost;
 var activeGhosts;
 var ghostInterval;
+var wallImg;
+var pacmanImg;
 
 
 $(document).ready(function() {
@@ -196,6 +198,9 @@ function Start() {
 					board[i][j]=9 //red - forth monster
 					monsCount++;
 				}
+				else if (j == 8 && i == 8){
+					board[i][j]=11
+				}
 				
 				
 			else {
@@ -239,6 +244,12 @@ function Start() {
 		
 		food_remain--;
 	}
+	if(pacman_remain == 1){
+		var emptyCellPacman = findRandomEmptyCell(board);
+		pacmanPos.i = emptyCellPacman[0];
+		pacmanPos.j = emptyCellPacman[1];
+		board[emptyCellPacman[0]][emptyCellPacman[1]] = 2;
+	}
 	// maybe add pacman
 	// add clock to board
 	var c = findRandomEmptyCell(board);
@@ -265,8 +276,8 @@ function Start() {
 	if (pacmanPos == undefined){
 		pacmanPos = new Object();
 	}
-	interval = setInterval(UpdatePosition, 80);
-	ghostInterval = setInterval(updateGhostsLocations,320);
+	interval = setInterval(UpdatePosition, 125);
+	ghostInterval = setInterval(updateGhostsLocations,375);
 }
 
 
@@ -314,7 +325,7 @@ function Draw() {
 			if (board[i][j] == 2) {
 				pacmanPos.i = i;
 				pacmanPos.j = j;
-				var pacmanImg = new Image();
+				pacmanImg = new Image();
 				if (pacmanDirection == "RIGHT"){
 					pacmanImg.src = "Pac-Man-right.png"
 				}
@@ -353,7 +364,7 @@ function Draw() {
 					// context.rect(center.x - 20, center.y - 20, 40, 40);
 					// context.fillStyle = "grey"; //color
 					// context.fill();
-					var wallImg = new Image();
+					wallImg = new Image();
 					wallImg.src = "wall.png";
 					context.drawImage(wallImg,center.x-20,center.y-20,40,40);
 
@@ -386,10 +397,16 @@ function Draw() {
 				clockImg.src = "clock.png"
     			context.drawImage(clockImg, center.x - 20, center.y - 20, 40, 40);
 			}
-			else if (board[i][j] == 12){
+			else if (board[i][j] == 12){ // candy
 				var candyImg = new Image();
 				candyImg.src = "candy.png"
     			context.drawImage(candyImg, center.x - 20, center.y - 20, 40, 40);
+			}
+			else if (board[i][j] == 11){ //hamter
+				var hamsterImg = new Image()
+				hamsterImg.src = "cute-hamster.png"
+				context.drawImage(hamsterImg, center.x - 20, center.y - 20, 40, 40);
+
 			}
 		}
 	}
@@ -476,6 +493,9 @@ function UpdatePosition() {
 			score -=20;
 		}
 	}
+	if (board[pacmanPos.i][pacmanPos.j] == 11){
+		score += 50;
+	}
 	// if (board[pacmanPos.i][pacmanPos.j] == 10){
 	// 	time_elapsed += 30;
 	// }
@@ -521,8 +541,8 @@ function UpdatePosition() {
 	// }
 
 	if (time_elapsed == 0) { 
-		window.clearInterval(interval);
-		window.clearInterval(ghostInterval);
+		// window.clearInterval(interval);
+		// window.clearInterval(ghostInterval);
 		if (score < 100){
 			window.alert("You are better than " + score + " points!");
 		}
@@ -535,8 +555,8 @@ function UpdatePosition() {
 	}
 
 	if (foodCollected == foodNum) { 
-		window.clearInterval(interval);
-		window.clearInterval(ghostInterval);
+		// window.clearInterval(interval);
+		// window.clearInterval(ghostInterval);
 		window.alert("Game completed");
 		stopGame();
 	} else {
@@ -556,8 +576,12 @@ function togglePlay() {
 };
 
 function stopGame(){
-	window.clearInterval(interval);
-	window.clearInterval(ghostInterval);
+	if (interval != undefined){
+		window.clearInterval(interval);
+	}
+	if (ghostInterval != undefined){
+		window.clearInterval(ghostInterval);
+	}
 	// interval = undefined;
 	// check if
 	document.getElementById("timeVal").innerHTML = time;

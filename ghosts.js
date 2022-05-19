@@ -174,29 +174,3 @@ function checkDistance(i,j){
     let distance = Math.sqrt(iDis+jDis);
     return distance;
 }
-
-function randomStep(i,j){
-        let moves_arr = new Array();
-        //up
-        if (j > 0 && board[i][j - 1] != 4 && board[i][j - 1] != 6 && board[i][j - 1] != 7 && board[i][j - 1] != 8 && board[i][j - 1] != 9 && board[i][j - 1] != 10 && board[i][j - 1] != 11) {
-            moves_arr.push([i,j-1])
-        }
-        //down
-        if (j < 16 && board[i][j + 1] != 4 && board[i][j + 1] != 6 && board[i][j + 1] != 7 && board[i][j + 1] != 8 && board[i][j + 1] != 9 && board[i][j + 1] != 10 && board[i][j + 1] != 11) {
-            moves_arr.push([i,j+1])
-
-        }
-        //left
-        if (i > 0 && board[i - 1][j] != 4 && board[i - 1][j] != 6 && board[i - 1][j] != 7 && board[i - 1][j] != 8 && board[i - 1][j] != 9 && board[i - 1][j] != 10 && board[i - 1][j] != 11) {
-            moves_arr.push([i-1,j])
-
-        }
-        //right
-        if (i < 16 && board[i + 1][j] != 4 && board[i + 1][j] != 6 && board[i + 1][j] != 7 && board[i + 1][j] != 8 && board[i + 1][j] != 9 && board[i + 1][j] != 10 && board[i + 1][j] != 11) {
-            moves_arr.push([i+1,j])
-
-        }
-        console.log(moves_arr)
-        let rand = RandomInt(0,moves_arr.length-1);
-        return moves_arr[rand];
-}
