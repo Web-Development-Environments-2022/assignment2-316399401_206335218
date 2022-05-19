@@ -349,10 +349,14 @@ function Draw() {
 			context.fill();
 			} 
 			else if (board[i][j] == 4) {
-					context.beginPath();
-					context.rect(center.x - 20, center.y - 20, 40, 40);
-					context.fillStyle = "grey"; //color
-					context.fill();
+					// context.beginPath();
+					// context.rect(center.x - 20, center.y - 20, 40, 40);
+					// context.fillStyle = "grey"; //color
+					// context.fill();
+					var wallImg = new Image();
+					wallImg.src = "wall.png";
+					context.drawImage(wallImg,center.x-20,center.y-20,40,40);
+
 			}
 			else if (board[i][j] == 9){ //red
 				// var redImg = new Image();
@@ -464,7 +468,7 @@ function UpdatePosition() {
 	// 		score = 0;
 	// 	}
 	if (board[pacmanPos.i][pacmanPos.j] == 12){
-		let rand = Math.random()
+		let rand = Math.random();
 		if (rand <=0.5){
 			score += 20;
 		}
@@ -556,7 +560,8 @@ function resetAfterEat(boardNum){
 	pacmanPos.i = newPac[0];
 	pacmanPos.j = newPac[1];
 	board[pacmanPos.i][pacmanPos.j] = 2;
-	window.clearInterval(interval);
-	window.clearInterval(ghostInterval)
 	resetGhostLocations();
+	// window.clearInterval(interval);
+	// window.clearInterval(ghostInterval)
+	
 }
