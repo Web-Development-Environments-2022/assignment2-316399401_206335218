@@ -59,7 +59,7 @@ function updateGhostsLocations(){
         // let dis_arr = new Array();
         // let moves_arr = new Array();
         //up
-        if (g.j > 0 && board[g.i][g.j - 1] != 4 && board[g.i][g.j - 1] != 6 && board[g.i][g.j - 1] != 7 && board[g.i][g.j - 1] != 8 && board[g.i][g.j - 1] != 9 && board[g.i][g.j - 1] != 10 && board[g.i][g.j - 1] != 11 && board[g.i][g.j - 1] != 12) {
+        if (g.j > 0 && board[g.i][g.j - 1] != 4 && board[g.i][g.j - 1] != 6 && board[g.i][g.j - 1] != 7 && board[g.i][g.j - 1] != 8 && board[g.i][g.j - 1] != 9 && board[g.i][g.j - 1] != 11) {
             let next_dis = checkDistance(g.i,g.j - 1);
             console.log("up_dis" + next_dis);
 
@@ -74,7 +74,7 @@ function updateGhostsLocations(){
             // }
         }
         //down
-        if (g.j < 16 && board[g.i][g.j + 1] != 4 && board[g.i][g.j + 1] != 6 && board[g.i][g.j + 1] != 7 && board[g.i][g.j + 1] != 8 && board[g.i][g.j + 1] != 9 && board[g.i][g.j + 1] != 10 && board[g.i][g.j + 1] != 11 && board[g.i][g.j + 1] != 12) {
+        if (g.j < 16 && board[g.i][g.j + 1] != 4 && board[g.i][g.j + 1] != 6 && board[g.i][g.j + 1] != 7 && board[g.i][g.j + 1] != 8 && board[g.i][g.j + 1] != 9 && board[g.i][g.j + 1] != 11) {
             let next_dis = checkDistance(g.i,g.j + 1);
             // if (next_dis<cur_dis){
                 console.log("down_dis" + next_dis);
@@ -90,7 +90,7 @@ function updateGhostsLocations(){
             // } 
         }
         //left
-        if (g.i > 0 && board[g.i - 1][g.j] != 4 && board[g.i - 1][g.j] != 6 && board[g.i - 1][g.j] != 7 && board[g.i - 1][g.j] != 8 && board[g.i - 1][g.j] != 9 && board[g.i - 1][g.j] != 10 && board[g.i - 1][g.j] != 11 && board[g.i - 1][g.j] != 12) {
+        if (g.i > 0 && board[g.i - 1][g.j] != 4 && board[g.i - 1][g.j] != 6 && board[g.i - 1][g.j] != 7 && board[g.i - 1][g.j] != 8 && board[g.i - 1][g.j] != 9 && board[g.i - 1][g.j] != 11) {
             let next_dis = checkDistance(g.i-1,g.j);
             // if (next_dis<cur_dis){
                 console.log("left_dis" + next_dis);
@@ -106,7 +106,7 @@ function updateGhostsLocations(){
             // }
         }
         //right
-        if (g.i < 16 && board[g.i + 1][g.j] != 4 && board[g.i + 1][g.j] != 6 && board[g.i + 1][g.j] != 7 && board[g.i + 1][g.j] != 8 && board[g.i + 1][g.j] != 9 && board[g.i + 1][g.j] != 10 && board[g.i + 1][g.j] != 11 && board[g.i + 1][g.j] != 12) {
+        if (g.i < 16 && board[g.i + 1][g.j] != 4 && board[g.i + 1][g.j] != 6 && board[g.i + 1][g.j] != 7 && board[g.i + 1][g.j] != 8 && board[g.i + 1][g.j] != 9 && board[g.i + 1][g.j] != 11) {
             let next_dis = checkDistance(g.i+1,g.j);
             // if (next_dis<cur_dis){
                 console.log("right_dis" + next_dis);
@@ -154,7 +154,6 @@ function updateGhostsLocations(){
 
 function ghostMove(cur_i,cur_j,next_i,next_j,g){
 
-            console.log(g)
             board[cur_i][cur_j] = g.prevLoc;
             if (board[next_i][next_j]==2){
                 resetAfterEat(g.boardNum);
