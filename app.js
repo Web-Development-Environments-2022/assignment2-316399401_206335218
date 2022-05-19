@@ -78,6 +78,9 @@ function Start() {
 	var food_remain = foodNum;
 	sumCount=0;
 	foodCollected=0;
+	pacmanImg = new Image();
+	wallImg = new Image();
+	wallImg.src = "wall.png";
 	lives=5;
 	monsCount=0;
 	foodDev();
@@ -335,7 +338,7 @@ function Draw() {
 			if (board[i][j] == 2) {
 				pacmanPos.i = i;
 				pacmanPos.j = j;
-				pacmanImg = new Image();
+				// pacmanImg = new Image();
 				if (pacmanDirection == "RIGHT"){
 					pacmanImg.src = "Pac-Man-right.png"
 				}
@@ -370,8 +373,8 @@ function Draw() {
 			context.fill();
 			} 
 			else if (board[i][j] == 4) {
-				wallImg = new Image();
-				wallImg.src = "wall.png";
+				// wallImg = new Image();
+				// wallImg.src = "wall.png";
 				context.drawImage(wallImg,center.x-20,center.y-20,40,40);
 
 			}
@@ -490,7 +493,7 @@ function UpdatePosition() {
 	}
 
 	if (foodCollected == foodNum) { 
-		window.alert("Game completed");
+		window.alert("Winner!!!");
 		stopGame();
 	} else {
 		Draw();
