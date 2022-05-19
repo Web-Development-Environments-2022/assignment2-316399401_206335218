@@ -510,12 +510,35 @@ function UpdatePosition() {
 	time_elapsed = Math.floor(time_elapsed);
 
 
-	if (time_elapsed == 0 || foodCollected == foodNum) { 
+	// if (time_elapsed == 0 || foodCollected == foodNum) { 
+	// 	window.clearInterval(interval);
+	// 	window.clearInterval(ghostInterval);
+	// 	window.alert("Game completed");
+	// 	stopGame();
+	// 	// music_play.pause();
+	// } else {
+	// 	Draw();
+	// }
+
+	if (time_elapsed == 0) { 
+		window.clearInterval(interval);
+		window.clearInterval(ghostInterval);
+		if (score < 100){
+			window.alert("You are better than " + score + " points!");
+		}
+		else{
+			window.alert("Winner!!!");
+		}
+		stopGame();
+	} else {
+		Draw();
+	}
+
+	if (foodCollected == foodNum) { 
 		window.clearInterval(interval);
 		window.clearInterval(ghostInterval);
 		window.alert("Game completed");
 		stopGame();
-		// music_play.pause();
 	} else {
 		Draw();
 	}
@@ -534,7 +557,8 @@ function togglePlay() {
 
 function stopGame(){
 	window.clearInterval(interval);
-	interval = undefined;
+	window.clearInterval(ghostInterval);
+	// interval = undefined;
 	// check if
 	document.getElementById("timeVal").innerHTML = time;
 	music_play.pause();
@@ -552,8 +576,10 @@ function resetAfterEat(boardNum){
 	}
 	lives--;
 	if(lives<=0){
-		window.alert("Looser!!")
-		music_play.pause();
+		window.alert("Looser!!");
+		//check
+		stopGame();
+		// music_play.pause();
 	}		
 	board[pacmanPos.i][pacmanPos.j] = 0;
 	let newPac = findRandomEmptyCell(board);

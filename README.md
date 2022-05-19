@@ -1,3 +1,17 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7811302&assignment_repo_type=AssignmentRepo)
-# Assignment2
+# Assignment2 - Pacman
+Pacman game by Stav Keidar and Noa Birenboim
+
+Stav Keidar: 206335218
+
+Noa Birenboim: 316399401
+
+**Website URL:** https://web-development-environments-2022.github.io/assignment2-316399401_206335218/
+
+## Funcionality Added:
+* Eating a clock will give the user 30 extra seconds.
+* Eating a candy will give the user 20 points with a probability of 50% or will remove 20 points with a probability of 50%.
+* Meeting the green ghost will remove 2 lives and 25 points.
+
+
+
  
